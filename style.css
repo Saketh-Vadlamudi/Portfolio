@@ -1,0 +1,940 @@
+/* Variables (Light Mode) - REVISED FOR PROFESSIONAL LOOK V2 */
+:root {
+    --primary-color: #0D6EFD;      /* Professional Blue */
+    --primary-color-rgb: 13, 110, 253;
+    --primary-light: #4DA3FD;      /* Lighter Professional Blue */
+    --primary-light-rgb: 77, 163, 253;
+    --primary-dark: #0A58CA;        /* Darker Professional Blue */
+    --primary-dark-rgb: 10, 88, 202;
+
+    --secondary-color: #4B5563;     /* Medium Gray (secondary text) */
+    --secondary-color-rgb: 75, 85, 99;
+
+    --dark-color: #111827;          /* Very Dark Gray/Charcoal (main text) */
+    --dark-color-rgb: 17, 24, 39;
+
+    --light-color: #F9FAFB;         /* Very Light Gray (main page background) */
+    --light-color-rgb: 249, 250, 251;
+
+    --card-bg-light: #FFFFFF;         /* White (cards, elevated surfaces) */
+    --card-bg-light-rgb: 255, 255, 255;
+
+    --gray-color: #D1D5DB;          /* Light Gray (borders) */
+    --gray-color-rgb: 209, 213, 219;
+
+    --success-color: #16A34A;
+    --warning-color: #F59E0B;
+    --danger-color: #DC2626;
+    --transition: all 0.3s ease;
+
+    /* Explicit variable for active link color to ensure it matches primary */
+    --active-link-color: var(--primary-color);
+}
+
+/* Dark Mode Colors - REVISED FOR PROFESSIONAL LOOK V2 */
+[data-theme="dark"] {
+    --primary-color: #2563EB;      /* Slightly brighter blue for dark mode primary */
+    --primary-color-rgb: 37, 99, 235;
+    --primary-light: #60A5FA;      /* Lighter blue for highlights in dark mode */
+    --primary-light-rgb: 96, 165, 250;
+    --primary-dark: #0D6EFD;        /* Original Blue as dark variant */
+    --primary-dark-rgb: 13, 110, 253;
+
+    --secondary-color: #9CA3AF;     /* Light-Medium Gray (secondary text) */
+    --secondary-color-rgb: 156, 163, 175;
+
+    --dark-color: #F3F4F6;          /* Light Off-White (main text) */
+    --dark-color-rgb: 243, 244, 246;
+
+    --light-color: #030712;         /* Very Dark Desaturated Blue/Charcoal (main page background) */
+    --light-color-rgb: 3, 7, 18;
+
+    --card-bg-light: #111827;       /* Dark Gray (cards - original var name kept) */
+    --card-bg-light-rgb: 17, 24, 39;
+
+    --gray-color: #374151;          /* Medium-Dark Gray (borders/elevated surfaces) */
+    --gray-color-rgb: 55, 65, 81;
+
+    --success-color: #16A34A;
+    --warning-color: #F59E0B;
+    --danger-color: #DC2626;
+
+    /* Explicit variable for active link color in dark mode to ensure it matches the dark mode primary */
+    --active-link-color: var(--primary-color);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--dark-color);
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(var(--card-bg-light-rgb), 0.92);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: var(--transition);
+    border-bottom: 1px solid var(--gray-color);
+}
+
+[data-theme="dark"] .navbar {
+    background-color: var(--card-bg-light); /* Solid dark card background (#111827) */
+    border-bottom-color: var(--gray-color); /* Dark border for separation (#374151) */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Adjusted shadow for depth */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color); /* Uses the theme's primary color */
+    transition: var(--transition);
+}
+.navbar-brand:hover {
+    transform: translateY(-2px);
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--dark-color); /* Default text color for nav links */
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+    position: relative;
+    border-radius: 6px;
+}
+@media (min-width: 992px) {
+    .nav-item { margin: 0 0.5rem; }
+    .nav-link { padding: 0.5rem 1.2rem; }
+    .nav-link::before {
+        content: ''; position: absolute; top: 0; left: 0;
+        width: 100%; height: 100%; border-radius: 6px;
+        background: rgba(var(--primary-color-rgb), 0.1);
+        transform: scale(0.8); opacity: 0; transition: var(--transition);
+    }
+    .nav-link:hover::before { transform: scale(1); opacity: 1; }
+}
+
+.nav-link::after {
+    content: ''; position: absolute; bottom: 0; left: 50%;
+    width: 0; height: 2px;
+    background-color: var(--active-link-color); /* MODIFIED: Underline color to match active link text */
+    transition: var(--transition); transform: translateX(-50%);
+}
+
+.nav-link:hover {
+    color: var(--active-link-color); /* MODIFIED: Hover text color matches active link color */
+    transform: translateY(-1px);
+}
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    /* MODIFIED: Ensure text color uses the intended active link color and try to override conflicting styles */
+    /* The use of !important is for diagnostic purposes if other styles are overriding this; investigate if so. */
+    color: var(--active-link-color) !important;
+    font-weight: 600;
+}
+
+
+@media (max-width: 991px) {
+    .navbar-nav { padding: 1rem 0; }
+    .nav-item { margin: 0.5rem 0; }
+    .nav-link { padding: 0.5rem 1rem; }
+    .nav-link:hover {
+        background: rgba(var(--primary-color-rgb), 0.08);
+        /* Text color for hover on small screens will also use --active-link-color due to the general .nav-link:hover rule */
+    }
+}
+
+/* Home Section */
+#home { padding-top: 5rem; }
+.home-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+.typed-text { font-size: 3rem; color: var(--primary-color); margin-bottom: 1.5rem; }
+.home-img {
+    position: relative; width: 380px; height: 380px;
+    margin: 0 auto; animation: float 6s ease-in-out infinite;
+}
+.home-img::before {
+    content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px;
+    border-radius: 50%; background: var(--primary-color);
+    opacity: 0.05; filter: blur(10px);
+}
+.home-img img {
+    width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--card-bg-light);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+}
+[data-theme="dark"] .home-img img {
+    border: 3px solid var(--gray-color);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+@keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
+.home-content { position: relative; z-index: 1; }
+.home-social-links { display: flex; gap: 1.25rem; margin-top: 2rem; justify-content: center; }
+@media (min-width: 992px) { .home-social-links { justify-content: flex-start; } }
+.home-social-link {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--gray-color);
+    color: var(--secondary-color);
+    font-size: 1.1rem; transition: all 0.3s ease; text-decoration: none;
+}
+[data-theme="dark"] .home-social-link { border-color: var(--gray-color); }
+.home-social-link:hover {
+    transform: translateY(-3px); background: var(--primary-color);
+    border-color: var(--primary-color); color: white;
+    box-shadow: 0 0 18px 2px rgba(var(--primary-color-rgb), 0.25);
+}
+@media (max-width: 991px) {
+    .home-img { width: 300px; height: 300px; margin-bottom: 2rem; }
+    .home-content h1 { font-size: 2.2rem; } .home-content h2 { font-size: 1.8rem; }
+    .home-content .lead { font-size: 1.1rem; }
+}
+@media (max-width: 576px) {
+    .home-img { width: 280px; height: 280px; }
+    .home-content h1 { font-size: 2rem; } .home-content h2 { font-size: 1.6rem; }
+    .home-content .lead { font-size: 1rem; } .btn-lg { padding: 0.75rem 2rem; }
+    .home-social-links { gap: 1rem; }
+    .home-social-link { width: 40px; height: 40px; font-size: 1.1rem; }
+}
+
+/* Buttons (Universal Style) */
+.btn {
+    padding: 0.75rem 1.5rem; border-radius: 6px;
+    font-weight: 500; transition: var(--transition);
+    border: 1px solid transparent;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color); color: white;
+    position: relative; z-index: 1; overflow: hidden;
+    text-decoration: none; display: inline-block;
+    text-align: center; cursor: pointer;
+}
+.btn:hover {
+    border-color: var(--primary-dark); transform: translateY(-2px);
+    color: white; box-shadow: 0 3px 8px rgba(var(--primary-dark-rgb), 0.18);
+}
+.btn::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 0; height: 100%; background-color: var(--primary-dark);
+    transition: width 0.6s ease; z-index: -1;
+}
+.btn:hover::before { width: 100%; }
+
+/* Section Base Styles */
+section {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 5rem 0; position: relative; overflow: hidden;
+}
+section::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(var(--gray-color-rgb), 0.4), transparent);
+}
+[data-theme="dark"] section::before {
+    background: linear-gradient(to right, transparent, rgba(var(--gray-color-rgb), 0.25), transparent);
+}
+
+/* Card Base Style (for glow effect) - Apply this class or merge styles */
+.card-base-style {
+    background: var(--card-bg-light); border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border: 1px solid var(--gray-color);
+    position: relative; overflow: hidden;
+}
+[data-theme="dark"] .card-base-style {
+    background: var(--card-bg-light); border-color: var(--gray-color);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+.card-base-style:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08), 0 0 35px 7px rgba(var(--primary-color-rgb), 0.22);
+}
+[data-theme="dark"] .card-base-style:hover {
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12), 0 0 35px 7px rgba(var(--primary-color-rgb), 0.28);
+}
+
+/* Apply .card-base-style properties to specific card classes */
+.skill-item, .project-card, .experience-card, .certification-card, .achievement-card, .certificate-card, .contact-wrapper {
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+[data-theme="dark"] .skill-item,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .experience-card,
+[data-theme="dark"] .certification-card,
+[data-theme="dark"] .achievement-card,
+[data-theme="dark"] .certificate-card,
+[data-theme="dark"] .contact-wrapper {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+.skill-item:hover, .project-card:hover, .experience-card:hover, .certification-card:hover, .achievement-card:hover, .certificate-card:hover, .contact-wrapper:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08), 0 0 35px 7px rgba(var(--primary-color-rgb), 0.22);
+}
+[data-theme="dark"] .skill-item:hover,
+[data-theme="dark"] .project-card:hover,
+[data-theme="dark"] .experience-card:hover,
+[data-theme="dark"] .certification-card:hover,
+[data-theme="dark"] .achievement-card:hover,
+[data-theme="dark"] .certificate-card:hover,
+[data-theme="dark"] .contact-wrapper:hover {
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12), 0 0 35px 7px rgba(var(--primary-color-rgb), 0.28);
+}
+
+/* Skills Section */
+#skills { background: rgba(var(--primary-color-rgb), 0.01); padding: 4rem 0; }
+.skills-container {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem; padding: 1rem; max-width: 1200px; margin: 0 auto;
+}
+.skill-item {
+    background: var(--card-bg-light); border: 1px solid var(--gray-color);
+    padding: 1.5rem; display: flex; flex-direction: column;
+    align-items: center; gap: 1rem; cursor: pointer;
+}
+[data-theme="dark"] .skill-item {
+    background: var(--card-bg-light); border-color: var(--gray-color);
+}
+.skill-item i, .skill-item img {
+    font-size: 2.5rem; transition: all 0.3s ease-out;
+    color: var(--secondary-color);
+}
+[data-theme="dark"] .skill-item i, [data-theme="dark"] .skill-item img { color: var(--secondary-color); }
+.skill-item:hover i, .skill-item:hover img {
+    transform: scale(1.15) translateY(-4px);
+    color: var(--primary-color);
+}
+.skill-item:hover i.fa-html5 { color: #E44D26; transform: scale(1.2) translateY(-5px) rotate(5deg); text-shadow: 0 3px 6px rgba(228,77,38,0.3); }
+.skill-item:hover i.fa-css3-alt { color: #264DE4; transform: scale(1.2) translateY(-5px) rotate(-5deg); text-shadow: 0 3px 6px rgba(38,77,228,0.3); }
+.skill-item:hover i.fa-js { color: #F7DF1E; transform: scale(1.2) translateY(-5px); text-shadow: 0 3px 6px rgba(247,223,30,0.3); }
+.skill-item:hover i.fa-react { color: #61DAFB; animation: spinReact 5s linear infinite; transform: scale(1.25) translateY(-3px); text-shadow: 0 0 8px rgba(97,218,251,0.4); }
+.skill-item:hover i.fa-node-js { color: #339933; transform: scale(1.2) translateY(-5px) rotate(3deg); text-shadow: 0 3px 6px rgba(51,153,51,0.3); }
+.skill-item:hover i.fa-python { color: #3776AB; transform: scale(1.2) translateY(-5px) rotate(-3deg); text-shadow: 0 3px 6px rgba(55,118,171,0.3); }
+.skill-item:hover i.fa-git-alt { color: #F05032; transform: scale(1.2) translateY(-5px) rotate(8deg); text-shadow: 0 3px 6px rgba(240,80,50,0.3); }
+.skill-item:hover i.fa-bootstrap { color: #7952B3; transform: scale(1.2) translateY(-5px) rotate(-4deg); text-shadow: 0 3px 6px rgba(121,82,179,0.3); }
+@keyframes spinReact { from { transform: rotate(0deg) scale(1.25) translateY(-3px); } to { transform: rotate(360deg) scale(1.25) translateY(-3px); } }
+.skill-item img { width: 2.5rem; height: 2.5rem; }
+.skill-name { font-size: 0.9rem; font-weight: 500; color: var(--secondary-color); text-align: center; transition: all 0.3s ease; }
+.skill-item:hover .skill-name { color: var(--primary-color); font-weight: 600; }
+@media (max-width: 768px) { .skills-container { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1rem; padding: 0.5rem; } .skill-item { padding: 1.25rem; } .skill-item i, .skill-item img { font-size: 2rem; width: 2rem; height: 2rem; } .skill-name { font-size: 0.8rem; } }
+@media (max-width: 576px) { .skills-container { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); } }
+
+/* Projects Section */
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 1rem; max-width: 1400px; margin: 0 auto; }
+.project-card { background: var(--card-bg-light); border: 1px solid var(--gray-color); display: flex; flex-direction: column; }
+[data-theme="dark"] .project-card { background: var(--card-bg-light); border-color: var(--gray-color); }
+.project-image { position: relative; width: 100%; height: 200px; overflow: hidden; flex-shrink: 0; }
+.project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.project-card:hover .project-image img { transform: scale(1.07); }
+.project-details { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+.project-details h3 { font-size: 1.25rem; font-weight: 600; color: var(--dark-color); margin-bottom: 0.75rem; }
+.project-details p { font-size: 0.9rem; color: var(--secondary-color); margin-bottom: 1rem; line-height: 1.6; flex-grow: 1; }
+.project-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(var(--primary-dark-rgb), 0.92), rgba(var(--primary-color-rgb), 0.96)); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: all 0.35s ease; overflow-y: auto; padding: 1.5rem; }
+.project-card:hover .project-overlay { opacity: 1; }
+.project-content { color: white; text-align: center; transform: translateY(15px); transition: transform 0.35s ease 0.05s; width: 100%; max-height: 100%; }
+.project-card:hover .project-content { transform: translateY(0); }
+.project-content h3 { font-size: 1.4rem; font-weight: 600; color: white; margin-bottom: 1rem; line-height: 1.3; }
+.tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; }
+.tech-stack span { padding: 0.35rem 0.75rem; background: rgba(255, 255, 255, 0.15); color: white; border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease; }
+.tech-stack span:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-2px); }
+.btn-demo, .btn-code { padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; font-weight:500; }
+.btn-demo { background: var(--card-bg-light); color: var(--primary-color); border: 1px solid var(--primary-color); }
+.btn-demo:hover { background: var(--primary-color); color: white; transform: translateY(-2px); box-shadow: 0 2px 5px rgba(var(--primary-color-rgb),0.2);}
+[data-theme="dark"] .btn-demo { background: var(--card-bg-light); color: var(--primary-light); border: 1px solid var(--primary-light); }
+[data-theme="dark"] .btn-demo:hover { background: var(--primary-light); color: var(--card-bg-light); }
+.btn-code { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.4); }
+.btn-code:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
+@media (max-width: 1200px) { .projects-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; } .project-content { padding: 1.25rem; } .project-content h3 { font-size: 1.3rem; margin-bottom: 0.75rem; } }
+@media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; padding: 1rem 0.5rem; } .project-content { padding: 1rem; } .project-details h3 { font-size: 1.2rem; } .project-details p { font-size: 0.85rem; } .project-content h3 { font-size: 1.2rem; margin-bottom: 0.5rem;} .tech-stack { gap: 0.4rem; margin-bottom: 1rem; } .tech-stack span { padding: 0.25rem 0.6rem; font-size: 0.8rem; } .btn-demo, .btn-code { padding: 0.5rem 1rem; font-size: 0.85rem; } }
+
+/* Experience Section */
+.experience-card { background: var(--card-bg-light); border: 1px solid var(--gray-color); padding: 2rem; margin-bottom: 2rem; }
+[data-theme="dark"] .experience-card { background: var(--card-bg-light); border-color: var(--gray-color); }
+.experience-header { margin-bottom: 1.5rem; } .experience-header h3 { font-size: 1.5rem; color: var(--dark-color); margin-bottom: 0.5rem; }
+.company-info { margin-bottom: 1rem; } .company-name { color: var(--primary-color); font-weight: 500; margin-bottom: 0.25rem; }
+.experience-date { color: var(--secondary-color); font-size: 0.9rem; }
+.experience-intro { color: var(--secondary-color); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+.experience-achievements { list-style: none; padding: 0; margin: 0; }
+.experience-achievements li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: var(--secondary-color); font-size: 0.95rem; line-height: 1.6; }
+.experience-achievements li::before { content: '›'; position: absolute; left: 0; color: var(--primary-color); font-weight: bold; font-size: 1.2em; line-height:1; }
+@media (max-width: 768px) { .experience-card { padding: 1.5rem; } .experience-header h3 { font-size: 1.25rem; } .experience-intro, .experience-achievements li { font-size: 0.9rem; } }
+
+/* Achievement Cards */
+.achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 1rem; max-width: 1200px; margin: 0 auto; }
+.achievement-card { background: var(--card-bg-light); border: 1px solid var(--gray-color); border-radius: 15px; padding: 1.5rem; position: relative; }
+[data-theme="dark"] .achievement-card { background: var(--card-bg-light); border-color: var(--gray-color); }
+.achievement-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; position: relative; overflow: hidden; }
+.achievement-icon i { font-size: 1.4rem; color: white; transition: transform 0.3s ease; }
+.achievement-card:hover .achievement-icon i { transform: scale(1.1) rotate(5deg); }
+.achievement-content h3 { font-size: 1.2rem; color: var(--dark-color); margin-bottom: 0.75rem; line-height: 1.4; }
+.achievement-meta { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem; }
+.achievement-meta span { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--secondary-color); font-size: 0.85rem; }
+.tech-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
+.tech-pills span { background: rgba(var(--primary-color-rgb), 0.1); color: var(--primary-color); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; transition: all 0.3s ease; }
+[data-theme="dark"] .tech-pills span { background: rgba(var(--primary-color-rgb), 0.15); }
+.tech-pills span:hover { background: rgba(var(--primary-color-rgb), 0.2); transform: scale(1.05); }
+.achievement-description { color: var(--secondary-color); font-size: 0.9rem; line-height: 1.5; margin: 0.75rem 0; }
+.achievement-btn.coming-soon { background: var(--secondary-color); border-color: var(--secondary-color); color: white; cursor: default; opacity: 0.8; font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+.achievement-btn.coming-soon:hover { background: var(--secondary-color); color: white; transform: none; box-shadow: none; }
+.achievement-btn.coming-soon::before { display:none; }
+.achievement-badge { position: absolute; top: 1rem; right: 1rem; }
+.achievement-badge span { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: white; padding: 0.4rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: 500; }
+@media (max-width: 768px) { .achievements-grid { grid-template-columns: 1fr; gap: 1rem; padding: 0.5rem; } .achievement-card { padding: 1.25rem; } .achievement-icon { width: 40px; height: 40px; } .achievement-icon i { font-size: 1.2rem; } .achievement-content h3 { font-size: 1.1rem; } .achievement-description { font-size: 0.85rem; } .achievement-btn { width: 100%; justify-content: center; padding: 0.5rem 0.8rem; font-size: 0.85rem; } }
+
+/* Contact Form */
+.contact-wrapper { background: var(--card-bg-light); border: 1px solid var(--gray-color); border-radius: 1rem; padding: 2.5rem; overflow: hidden; /* position: relative; ensure this if using child absolute positioning like decorations */ }
+[data-theme="dark"] .contact-wrapper { background: var(--card-bg-light); border-color: var(--gray-color); }
+.contact-decoration { position: absolute; top: 0; right: 0; bottom: 0; left: 0; pointer-events: none; overflow: hidden; }
+.decoration-circle { position: absolute; width: 300px; height: 300px; background: linear-gradient(45deg, rgba(var(--primary-color-rgb), 0.03), rgba(var(--primary-color-rgb), 0.01)); border-radius: 50%; top: -150px; right: -150px; animation: form-pulse 4s ease-in-out infinite; }
+.decoration-line { position: absolute; width: 100%; height: 100%; background: linear-gradient(45deg, transparent 45%, rgba(var(--primary-color-rgb), 0.01) 45%, rgba(var(--primary-color-rgb), 0.01) 55%, transparent 55%); transform: rotate(-45deg); animation: line-move 15s linear infinite; }
+@keyframes form-pulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 0.7; } }
+@keyframes line-move { 0% { background-position: 0 0; } 100% { background-position: 50px 50px; } }
+
+.form-floating { position: relative; }
+.form-floating > .form-control,
+.form-floating > .form-control-plaintext {
+    height: calc(3.5rem + 2px);
+    line-height: 1.25;
+}
+
+/* Initial Label Styling (Before Floating) */
+.form-floating > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0.75rem; /* Standard Bootstrap 5 padding for label */
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    border: 1px solid transparent; /* Match Bootstrap */
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+    color: var(--secondary-color); /* Uses theme's secondary color */
+}
+
+.form-floating > .form-control::placeholder {
+    color: transparent;
+}
+
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+    padding-top: 1.625rem;      /* Standard Bootstrap 5 padding */
+    padding-bottom: 0.625rem; /* Standard Bootstrap 5 padding */
+}
+
+/* Floated Label Styling - Light Mode (and base for dark mode inheritance) */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    opacity: .65; /* Standard Bootstrap 5 opacity */
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem); /* Standard Bootstrap 5 transform */
+    background-color: var(--card-bg-light); /* Notch background matches card/input bg in light mode (White) */
+    padding: 0 0.5rem; /* Horizontal padding for the notch */
+    height: auto; /* Allow label to shrink */
+    /* Text color for floated label in light mode uses var(--secondary-color) with opacity .65 */
+    /* color: var(--secondary-color); /* This would be the non-opacified color */
+}
+
+/* Floated Label Styling - Dark Mode Specifics - CORRECTED */
+[data-theme="dark"] .form-floating > .form-control:focus ~ label,
+[data-theme="dark"] .form-floating > .form-control:not(:placeholder-shown) ~ label {
+    /* Re-stating transform and related properties for robustness */
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+    padding: 0 0.5rem; /* Horizontal padding for the notch around the label */
+    height: auto; /* Allow label to shrink to content */
+
+    /* Appearance enhancements for dark mode - CORRECTED */
+    background-color: #111827;/*var(--card-bg-light); /* Notch background matches card/input bg in dark mode (e.g., #111827) */
+    /*color: var(--dark-color);                /* Use the main light text color (e.g., #F3F4F6) for significantly better contrast */
+    opacity: 0.7;                               /* Adjust opacity: visible but slightly less prominent than input text (Bootstrap uses .65) */
+}
+.form-control {
+    display: block; /* Ensure it's block for width: 100% if not in input-group */
+    width: 100%;    /* Ensure it takes full width if not in input-group */
+    border: 1px solid var(--gray-color);
+    border-radius: 6px;
+    padding: 0.75rem; /* Base padding, will be adjusted by floating label logic for top/bottom */
+    transition: var(--transition);
+    background-color: var(--card-bg-light); /* Light mode: white background */
+    color: var(--dark-color);               /* Light mode: dark text */
+    line-height: 1.25; /* Match form-floating > .form-control line-height */
+}
+[data-theme="dark"] .form-control {
+    border: 1px solid var(--gray-color);    /* Keeps the existing border: #374151 */
+    background-color: var(--light-color);   /* CHANGED: Use page background for input fields: #030712 */
+    color: var(--dark-color);               /* Keeps existing text color: #F3F4F6 */
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(var(--primary-color-rgb), 0.1);
+    /* outline: 0; /* Often added to remove default browser outline if custom shadow is used */
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.input-group {
+    position: relative;
+    display: flex; /* Added for Bootstrap like behavior */
+    flex-wrap: wrap; /* Added for Bootstrap like behavior */
+    align-items: stretch; /* Added for Bootstrap like behavior */
+    width: 100%; /* Added for Bootstrap like behavior */
+    transition: all 0.3s ease;
+}
+
+.input-group-text {
+    background: var(--light-color); /* Light mode page background for icon container */
+    border: 1px solid var(--gray-color);
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem; /* Match form-control base padding */
+    min-width: 42px; /* Custom min-width */
+    border-radius: 6px 0 0 6px; /* Rounded left corners for prepended text */
+}
+[data-theme="dark"] .input-group-text {
+    background: var(--card-bg-light); /* Dark mode card background for icon container */
+    border-color: var(--gray-color);
+    color: var(--secondary-color); /* Dark mode secondary color for icon */
+}
+
+/* Adjust .form-control and .form-floating when inside .input-group */
+.input-group > .form-floating {
+    flex: 1 1 auto; /* Allow form-floating to take remaining space */
+    width: 1%; /* Prevent it from taking full width if not needed */
+    min-width: 0; /* Allow shrinking */
+}
+.input-group > .form-floating > .form-control {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    /* border-left: none; /* Optional: if you want seamless connection to input-group-text */
+}
+/* If input-group-text is appended, adjust right border radius */
+.input-group > .form-floating:not(:last-child) > .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.input-group > .form-floating:not(:first-child) > .form-control {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.input-group > .input-group-text + .form-floating > .form-control {
+    /* This is already handled by the above if form-floating is not :first-child */
+}
+
+
+/* Focus styling for input-group */
+.input-group:focus-within .input-group-text {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+.input-group > .form-floating > .form-control:focus {
+    /* box-shadow: none; /* Optional: Removes focus shadow when inside input-group if group gets focus style */
+    /* The general .form-control:focus shadow might still be desirable */
+    z-index: 3; /* Ensure focused input is above siblings for shadow visibility */
+}
+
+
+.input-group-text i {
+    width: 16px;
+    text-align: center;
+}
+.btn-submit {
+    position: relative;
+    padding: 0.75rem 2.5rem;
+    overflow: hidden;
+}
+.btn-submit .btn-text { display: inline-block; transition: all 0.3s ease; }
+.btn-submit .btn-icon { position: absolute; right: -20px; top: 50%; transform: translateY(-50%); opacity: 0; transition: all 0.3s ease; }
+.btn-submit:hover:not(.btn::before) { padding-right: 3.5rem; } /* Ensure this doesn't conflict with .btn:hover::before width effect */
+.btn-submit:hover:not(.btn::before) .btn-text { transform: translateX(-10px); }
+.btn-submit:hover:not(.btn::before) .btn-icon { right: 1rem; opacity: 1; }
+
+@media (max-width: 768px) {
+    .contact-wrapper { padding: 1.5rem; }
+    .form-floating > .form-control, .form-floating > .form-control-plaintext { height: calc(3.2rem + 2px); }
+    .contact-wrapper .btn-primary, .contact-wrapper .btn-submit { width: 100%; padding: 0.6rem 1.5rem; }
+}
+
+/* Social Links (General) */
+.social-links { display: flex; gap: 1rem; margin-top: 1rem; }
+.social-link { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 50%; background-color: var(--card-bg-light); border: 1px solid var(--gray-color); color: var(--secondary-color); transition: var(--transition); }
+[data-theme="dark"] .social-link { background-color: var(--card-bg-light); border-color: var(--gray-color); color: var(--secondary-color); }
+.social-link:hover { background-color: var(--primary-color); color: white; border-color: var(--primary-color); transform: translateY(-3px); box-shadow: 0 0 10px rgba(var(--primary-color-rgb),0.2); }
+
+
+/* Scroll to Top & Dark Mode Toggle - REFINED FOR PROFESSIONAL LOOK */
+.scroll-to-top, .dark-mode-toggle {
+    width: 3rem; /* 48px */
+    height: 3rem; /* 48px */
+    border-radius: 50%; /* Keep circular shape */
+    border: none; /* Base border set below for specificity */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    /* Base shadow for light mode - subtle */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+[data-theme="dark"] .scroll-to-top,
+[data-theme="dark"] .dark-mode-toggle {
+    /* Base shadow for dark mode - slightly more pronounced due to darker surroundings */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    animation: scroll-bounce 2s infinite ease-in-out;
+}
+
+@keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.scroll-to-top:hover {
+    background: var(--primary-dark);
+    transform: translateY(-5px); /* Keep existing lift */
+    box-shadow: 0 4px 12px rgba(var(--primary-dark-rgb), 0.25); /* Enhance shadow on hover */
+}
+
+.scroll-to-top i {
+    font-size: 1.2rem; /* Assuming Font Awesome or similar */
+    transition: transform 0.3s ease;
+}
+.scroll-to-top:hover i {
+    transform: scale(1.1);
+}
+
+
+/* === Professional Dark Mode Toggle Styling === */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    background-color: var(--card-bg-light); /* Light: #FFFFFF, Dark: #111827 */
+    color: var(--secondary-color);           /* Light: #4B5563, Dark: #9CA3AF (Icon color) */
+    border: 1px solid var(--gray-color);     /* Light: #D1D5DB, Dark: #374151 */
+    /* Initial box-shadow is inherited from the common rule above */
+}
+
+/* Specific icon styling for the toggle button if using Font Awesome */
+.dark-mode-toggle i {
+    font-size: 1.1rem; /* Slightly smaller icon for balance */
+    transition: transform 0.3s ease, color 0.3s ease; /* For potential icon animation and color transition */
+    width: 1.2em; /* Ensure icon has a consistent width for alignment if icons vary */
+    height: 1.2em; /* Ensure icon has a consistent height */
+    display: flex; /* Ensure icon is centered if it's an SVG or has padding */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark mode specific toggle styles */
+[data-theme="dark"] .dark-mode-toggle {
+    background-color: var(--card-bg-light); /* #111827 */
+    color: var(--secondary-color);           /* #9CA3AF */
+    border-color: var(--gray-color);         /* #374151 */
+    /* Dark mode box-shadow is inherited */
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.03); /* Very subtle background tint on hover for light mode */
+    color: var(--primary-color);                   /* Icon color changes to primary */
+    border-color: var(--primary-color);            /* Border color changes to primary */
+    transform: translateY(-3px) scale(1.03);        /* Slight lift and scale for tactile feedback */
+    /* Refined shadow on hover: a bit more spread and primary color hint */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.07), 0 0 12px rgba(var(--primary-color-rgb), 0.12);
+}
+.dark-mode-toggle:hover i {
+    transform: scale(1.1); /* Slightly scale icon on hover */
+}
+
+[data-theme="dark"] .dark-mode-toggle:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.08); /* Slightly more visible tint in dark mode */
+    /* Hover color, border-color, transform are inherited from light mode hover if not overridden */
+    /* Refined shadow for dark mode hover */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15), 0 0 15px rgba(var(--primary-color-rgb), 0.18);
+}
+
+/* Focus state for accessibility - visible outline using primary color */
+.dark-mode-toggle:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1); /* Softer focus ring shadow */
+}
+
+
+@media (max-width: 768px) {
+    .scroll-to-top, .dark-mode-toggle { /* Apply responsive size to both */
+        width: 2.5rem;  /* 40px */
+        height: 2.5rem; /* 40px */
+    }
+    .scroll-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+    .dark-mode-toggle {
+        bottom: 1.5rem;
+        left: 1.5rem;
+    }
+    .scroll-to-top i {
+        font-size: 1rem;
+    }
+    .dark-mode-toggle i { /* Adjust icon size for smaller button */
+        font-size: 1rem;
+    }
+}
+
+
+/* Animations (AOS) */
+[data-aos] { opacity: 0; transition-duration: 1s; transition-property: opacity, transform; }
+[data-aos="fade-up"] { transform: translateY(100px); } [data-aos="fade-down"] { transform: translateY(-100px); }
+[data-aos="fade-right"] { transform: translateX(-100px); } [data-aos="fade-left"] { transform: translateX(100px); }
+[data-aos].aos-animate { opacity: 1; transform: translate(0); }
+@media (max-width: 992px) { .home-img { width: 320px; height: 320px; } }
+@media (max-width: 767px) { .skill-item { padding: 1rem; } .skill-name { font-size: 0.9rem; } .skill-item i, .skill-item img { font-size: 1.5rem !important; width: 1.5rem; height: 1.5rem;} }
+
+/* Section Title with Image */
+.section-title-wrapper { text-align: center; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.title-icon {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(var(--primary-color-rgb), 0.08);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem; margin-bottom: 0.5rem; transition: all 0.3s ease; position: relative;
+}
+.title-icon::before {
+    content: ''; position: absolute; inset: -3px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.15), rgba(var(--primary-color-rgb), 0.05) );
+    z-index: -1; opacity: 0; transition: opacity 0.3s ease; filter: blur(5px);
+}
+.title-icon:hover { transform: translateY(-5px) scale(1.03); }
+.title-icon:hover::before { opacity: 1; }
+
+/* Dark mode specific hover for title icon */
+[data-theme="dark"] .title-icon {
+    background: rgba(var(--primary-color-rgb), 0.12);
+}
+[data-theme="dark"] .title-icon:hover {
+    background: rgba(var(--primary-light-rgb), 0.2);
+    transform: translateY(-5px) scale(1.03);
+}
+[data-theme="dark"] .title-icon:hover::before {
+    opacity: 1;
+    background: linear-gradient(135deg, rgba(var(--primary-light-rgb), 0.3), rgba(var(--primary-light-rgb), 0.15) );
+    filter: blur(8px);
+}
+
+.title-image {
+    width: 100%; height: 100%; object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(38%) sepia(99%) saturate(2319%) hue-rotate(196deg) brightness(101%) contrast(101%);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+[data-theme="dark"] .title-image {
+    filter: brightness(0) saturate(100%) invert(35%) sepia(93%) saturate(1479%) hue-rotate(202deg) brightness(99%) contrast(91%);
+}
+.title-icon:hover .title-image { transform: scale(1.1); }
+.section-title { position: relative; display: inline-block; font-size: 2.5rem; font-weight: 600; color: var(--dark-color); margin: 0; padding-bottom: 1rem; }
+.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--primary-color); border-radius: 3px; }
+@media (max-width: 768px) { .section-title-wrapper { margin-bottom: 2rem; } .title-icon { width: 60px; height: 60px; } .section-title { font-size: 2rem; } }
+
+/* About Section */
+#about { position: relative; overflow: hidden; }
+#about::before { content: ''; position: absolute; width: 200px; height: 200px; background: linear-gradient(45deg, var(--primary-color), var(--primary-light)); border-radius: 50%; filter: blur(100px); opacity: 0.05; top: -100px; right: -100px; animation: moveGradient 15s ease-in-out infinite; }
+[data-theme="dark"] #about::before { opacity: 0.08; }
+@keyframes moveGradient { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(50px, 50px); } 50% { transform: translate(0, 100px); } 75% { transform: translate(-50px, 50px); } }
+.about-image { position: relative; padding: 1rem; max-width: 300px; margin: 0 auto; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.about-image img { position: relative; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2; filter: brightness(1); }
+.about-image:hover img { transform: translateY(-10px) scale(1.02); box-shadow: 0 15px 30px rgba(var(--primary-color-rgb), 0.12); filter: brightness(1.03); }
+.about-shape { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: linear-gradient(45deg, rgba(var(--primary-color-rgb),0.1), rgba(var(--primary-light-rgb),0.05)); border-radius: 15px; transform: rotate(-3deg); z-index: 1; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0.7; }
+.about-image:hover .about-shape { transform: rotate(-8deg) scale(1.1); opacity: 0.9; }
+.about-content { padding: 1rem; position: relative; }
+.about-content::before { content: ''; position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: radial-gradient(circle at top right, rgba(var(--primary-color-rgb), 0.02), transparent 60%); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
+.about-content:hover::before { opacity: 1; }
+.about-content .lead { font-size: 1.1rem; color: var(--primary-color); font-weight: 500; transform: translateY(20px); opacity: 0; animation: slideUp 0.8s ease forwards; }
+.about-content p { margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7; color: var(--secondary-color); transform: translateY(20px); opacity: 0; animation: slideUp 0.8s ease forwards; }
+.about-content p:nth-child(2) { animation-delay: 0.2s; } .about-content p:nth-child(3) { animation-delay: 0.4s; } .about-content p:nth-child(4) { animation-delay: 0.6s; }
+@keyframes slideUp { to { transform: translateY(0); opacity: 1; } }
+.about-content .btn { padding: 0.6rem 1.2rem; font-weight: 500; position: relative; transform: translateY(20px); opacity: 0; animation: slideUp 0.8s ease forwards 0.8s; }
+.about-content .btn::after { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(255,255,255,0.2); border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.6s ease, height 0.6s ease; z-index:0; }
+[data-theme="dark"] .about-content .btn::after { background: rgba(var(--dark-color-rgb), 0.1); }
+.about-content .btn:hover::after { width: 300px; height: 300px; }
+.about-content .btn-outline-primary { border-color: var(--primary-color); color: var(--primary-color); background: transparent; }
+.about-content .btn-outline-primary:hover { background: var(--primary-color); color: white; box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.15); }
+.about-content .btn.btn-primary:hover { box-shadow: 0 5px 15px rgba(var(--primary-dark-rgb), 0.2); }
+@media (max-width: 991px) { .about-image { max-width: 250px; margin: 0 auto 2rem; } .about-content { text-align: center; } .about-content .lead { font-size: 1rem; } .about-content p { font-size: 0.9rem; } }
+@media (max-width: 576px) { .about-image { padding: 0.75rem; max-width: 200px; } .about-content { padding: 0.75rem; } .about-content .lead { font-size: 0.95rem; } .about-content p { font-size: 0.85rem; line-height: 1.6; } .about-content .btn { display: block; margin-bottom: 0.75rem; font-size: 0.9rem; padding: 0.5rem 1rem; } }
+
+/* Certificates Section */
+.certificates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding: 1rem; }
+.certificate-card { background: var(--card-bg-light); border: 1px solid var(--gray-color); border-radius: 15px; aspect-ratio: 4/3; }
+[data-theme="dark"] .certificate-card { background: var(--card-bg-light); border-color: var(--gray-color); }
+.certificate-image { position: relative; width: 100%; height: 100%; overflow: hidden; }
+.certificate-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.certificate-card:hover .certificate-image img { transform: scale(1.1); }
+.certificate-overlay { position: absolute; inset: 0; background: linear-gradient( to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100% ); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; color: white; opacity: 0; transition: all 0.4s ease; }
+.certificate-card:hover .certificate-overlay { opacity: 1; }
+.certificate-overlay h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; transform: translateY(20px); transition: transform 0.4s ease; }
+.certificate-overlay p { font-size: 0.9rem; margin-bottom: 1rem; opacity: 0.9; transform: translateY(20px); transition: transform 0.4s ease 0.1s; }
+.certificate-card:hover .certificate-overlay h4, .certificate-card:hover .certificate-overlay p { transform: translateY(0); }
+.view-certificate { display: inline-block; padding: 0.5rem 1rem; background: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; transform: translateY(20px); transition: all 0.4s ease 0.2s; }
+.view-certificate:hover { background: var(--primary-dark); color: white; transform: translateY(0) scale(1.05); }
+.certificate-card:hover .view-certificate { transform: translateY(0); }
+@media (max-width: 768px) { .certificates-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; padding: 0.5rem; } .certificate-overlay { padding: 1rem; } .certificate-overlay h4 { font-size: 1.1rem; } .certificate-overlay p { font-size: 0.85rem; margin-bottom: 0.75rem; } .view-certificate { padding: 0.4rem 0.8rem; font-size: 0.85rem; } }
+
+/* Coming Soon Section */
+.coming-soon { padding: 3rem; background: var(--card-bg-light); border-radius: 1rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; border: 1px solid var(--gray-color); }
+[data-theme="dark"] .coming-soon { background: var(--card-bg-light); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: var(--gray-color); }
+.coming-soon-icon { font-size: 4rem; color: var(--primary-color); margin-bottom: 1.5rem; animation: rocket 2s ease-in-out infinite; }
+.coming-soon h3 { font-size: 2rem; color: var(--dark-color); margin-bottom: 1rem; }
+.coming-soon p { color: var(--secondary-color); font-size: 1.1rem; }
+@keyframes rocket { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
+@media (max-width: 768px) { .coming-soon { padding: 2rem; } .coming-soon-icon { font-size: 3rem; } .coming-soon h3 { font-size: 1.75rem; } .coming-soon p { font-size: 1rem; } }
+
+/* Footer Styles */
+.footer { background: var(--dark-color); color: var(--light-color); padding: 2rem 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+[data-theme="dark"] .footer { background: var(--light-color); color: var(--secondary-color); border-top: 1px solid var(--gray-color); }
+.footer-content { display: flex; align-items: center; justify-content: space-around; gap: 1.5rem; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.footer-copyright { font-size: 0.9rem; opacity: 0.8; }
+.footer-contact { font-size: 0.9rem; color: var(--primary-light); text-decoration: none; transition: all 0.3s ease; }
+[data-theme="dark"] .footer-contact { color: var(--primary-color); }
+.footer-contact:hover { color: white; opacity:0.9; transform: translateY(-2px); }
+[data-theme="dark"] .footer-contact:hover { color: var(--primary-light); }
+.footer-name { color: var(--primary-light); text-decoration: none; font-weight: 500; transition: all 0.3s ease; margin-left: 0.3rem; }
+[data-theme="dark"] .footer-name { color: var(--primary-color); }
+.footer-name:hover { color: white; opacity:0.9; transform: translateY(-2px); }
+[data-theme="dark"] .footer-name:hover { color: var(--primary-light); }
+@media (max-width: 768px) { .footer-content { flex-direction: column; justify-content: center; gap: 1rem; } .footer-copyright, .footer-contact { padding: 0.5rem 0; } }
+
+/* Notification System Styles - Themed for your site */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    /* Default background and text - will be overridden by .success or .error */
+    background-color: var(--card-bg-light); /* Uses your card background */
+    color: var(--dark-color);               /* Uses your main text color */
+    padding: 15px 20px;
+    border-radius: 8px;                     /* Consistent with other rounded elements */
+    border: 1px solid var(--gray-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    z-index: 1050; /* Ensure it's above other elements */
+    opacity: 0;
+    transform: translateX(110%); /* Start off-screen to the right */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between icon and text */
+    font-size: 0.95rem;
+    min-width: 280px; /* Minimum width */
+    max-width: 90vw; /* Maximum width relative to viewport */
+}
+
+[data-theme="dark"] .notification {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0); /* Slide in */
+}
+
+.notification.success {
+    background-color: var(--success-color);
+    color: #FFFFFF; /* White text for good contrast on success green */
+    border-color: var(--success-color);
+}
+
+[data-theme="dark"] .notification.success {
+    /* Success color is the same, text remains white */
+}
+
+.notification.error {
+    background-color: var(--danger-color);
+    color: #FFFFFF; /* White text for good contrast on danger red */
+    border-color: var(--danger-color);
+}
+
+[data-theme="dark"] .notification.error {
+    /* Danger color is the same, text remains white */
+}
+
+.notification i.fas { /* Target Font Awesome icons specifically */
+    font-size: 1.25rem;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.notification span {
+    flex-grow: 1; /* Allow text to take available space */
+}
+
+
+/* Responsive adjustments for notifications */
+@media (max-width: 576px) {
+    .notification {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        width: auto; /* Adjust width for small screens */
+        min-width: 0;
+        transform: translateY(-120%); /* Start above screen */
+        justify-content: flex-start; /* Align icon and text to the start */
+        padding: 12px 15px;
+    }
+
+    .notification.show {
+        transform: translateY(0); /* Slide down */
+    }
+
+    .notification i.fas {
+        font-size: 1.1rem;
+    }
+}

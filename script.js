@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const typedTextElement = document.querySelector('.typed-text');
     if (typedTextElement) {
         new Typed('.typed-text', {
-            strings: ['a Data Scientist', 'an AI/ML Engineer'],
+            strings: ['an AI/ML Engineer', 'a Data Scientist'],
             typeSpeed: 70, // Adjusted speed
             backSpeed: 40, // Adjusted speed
             backDelay: 1800,

@@ -3,962 +3,504 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saketh - AI/ML Engineer</title>
+    <meta name="description" content="Portfolio of Saketh Vadlamudi, an AI/ML engineer building enterprise AI, Oracle data automation, and decision-support platforms.">
+    <meta name="theme-color" content="#08111f">
+    <title>Saketh Vadlamudi | Enterprise AI &amp; Data Engineer</title>
+
     <script>
-        (function() {
-            let currentTheme = localStorage.getItem('theme');
-            if (!currentTheme) { // If no theme is saved in localStorage
-                currentTheme = 'dark'; // Default to 'dark'
-                localStorage.setItem('theme', currentTheme); // And save this default
-            }
-            document.documentElement.setAttribute('data-theme', currentTheme);
+        (() => {
+            const savedTheme = localStorage.getItem('theme');
+            const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = savedTheme || preferredTheme;
         })();
     </script>
-	<link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img4.png" type="image/png"> 
-	
 
+    <link rel="icon" href="Images/img4.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav" aria-label="Primary navigation">
         <div class="container">
-            <a class="navbar-brand" href="#home">Saketh Vadlamudi</a>
-            <div class="ms-auto d-flex align-items-center">
-                <button class="btn btn-outline-secondary me-2" id="darkModeToggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
+            <a class="navbar-brand" href="#home" aria-label="Saketh Vadlamudi, home">
+                <span class="brand-mark">SV</span>
+                <span>Saketh Vadlamudi</span>
+            </a>
+
+            <div class="d-flex align-items-center gap-2 order-lg-3">
+                <button class="theme-toggle" id="darkModeToggle" type="button" aria-label="Switch color theme">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
                 </button>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#experience">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#certifications">Certifications</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#achievements">Achievements</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#credentials">Credentials</a></li>
+                    <li class="nav-item"><a class="nav-link nav-cta" href="Images/Resume/Saketh_Vadlamudi_AI_ML_4YOE_Current.pdf" target="_blank" rel="noopener noreferrer">Résumé</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="min-vh-100 d-flex align-items-center">
-        <div class="container">
-            <div class="row align-items-center flex-column-reverse flex-lg-row">
-                <div class="col-lg-6 home-content text-center text-lg-start mt-3 mt-lg-0" data-aos="fade-right">
-                    <h1>Hello, I am Saketh <!--<span class="typed-text-container"><span class="typed-text"></span></span>--></h1>
-                    <h2 class="static-text">
-                        <span class="normal-text">I'm </span> 
-                        <!--<span class="highlight-text">Saketh Vadlamudi</span>-->
-						<span class="typed-text-container"><span class="typed-text"></span></span>
-                    </h2>
-                    <p class="lead" style="font-family: Times New Roman, Times, serif;font-size:30px">Engineering scalable AI systems turning data into competitive advantage</p>
-                    <div class="home-social-links">
-                        <a href="https://github.com/Saketh-Vadlamudi" target="_blank" rel="noopener noreferrer" class="home-social-link github" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/sakethvadlamudi" target="_blank" rel="noopener noreferrer" class="home-social-link linkedin" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="mailto:saketh22off@gmail.com" class="home-social-link email" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://leetcode.com/u/Saketh_vadlamudi" target="_blank" rel="noopener noreferrer" class="home-social-link leetcode" title="Leetcode">
-    <i class="fas fa-code"></i>
-</a>
-                    </div>
-                    <div class="text-center text-lg-start mt-4">
-<a href="Images/Resume/22-12-25/Saketh_Vadlamudi_AI_ML_4YOE.pdf" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-        <i class="fas fa-file-alt me-2"></i>View Resume
-    </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center mb-3 mb-lg-0" data-aos="fade-left">
-                    <div class="home-img">
-                        <img src="img1.png" alt="Saketh Vadlamudi" class="img-fluid rounded-circle">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-5">
-        <div class="container">
-            <div class="section-title-wrapper" data-aos="fade-up">
-                <h2 class="section-title">About Me</h2>
-            </div>
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-right">
-                    <div class="about-image">
-                        <img src="img3.png" alt="Saketh" class="img-fluid rounded-3" loading="lazy">
-                        <div class="about-shape"></div>
-                    </div>
-                </div>
-                <div class="col-lg-7" data-aos="fade-left">
-                    <div class="about-content">
-                        <p class="mb-3">
-                            I am currently working as an <span class="lead">AI/ML Engineer</span> at <span class="lead">Tiger Analytics</span>, where I focus on delivering end-to-end data science solutions that drive real business impact..
+    <main id="main-content">
+        <section id="home" class="hero-section">
+            <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+            <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+            <div class="container position-relative">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7">
+                        <p class="eyebrow"><span></span> Enterprise AI · Data Platforms · Oracle</p>
+                        <h1>I build AI systems <span class="hero-accent">that turn enterprise data into decisions.</span></h1>
+                        <p class="hero-copy">
+                            AI/ML engineer designing secure GenAI workflows, Oracle data automation, and full-stack decision platforms—from early architecture to stakeholder-ready prototypes.
                         </p>
-                        <p class="mb-3">
-							Here is a summary of my <span class="lead">Education:</span><br>
-                            <span class="lead">B.Tech</span> from <span class="lead">Narasaraopeta Engineering College</span><br>
-							<span class="lead">Post Graduation</span> in <span class="lead">Data Science & AI</span> from <span class="lead">IIT Roorkee</span><br>
-							<!--<span class="lead">M.Tech</span> in <span class="lead">AI & ML</span> from <span class="lead">BITS Pilani</span> (Pursuing)-->
-						</p>
-                        <p class="mb-3">
-                            Over time, I have gained hands-on experience with <span class="lead">Python, Generative AI, Machine Learning, NLP, SQL, and AWS Cloud</span> and have successfully developed multiple projects in Machine Learning, AI, and Web Development.
+                        <div class="hero-actions">
+                            <a class="btn-primary-custom" href="#work">
+                                Explore selected work <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn-secondary-custom" href="Images/Resume/Saketh_Vadlamudi_AI_ML_4YOE_Current.pdf" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-file-arrow-down" aria-hidden="true"></i> View résumé
+                            </a>
+                        </div>
+                        <div class="social-row" aria-label="Social links">
+                            <a href="https://github.com/Saketh-Vadlamudi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/sakethvadlamudi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://leetcode.com/u/Saketh_vadlamudi" target="_blank" rel="noopener noreferrer" aria-label="LeetCode profile"><i class="fas fa-code"></i></a>
+                            <a href="mailto:sakethvadlamudi22@gmail.com" aria-label="Email Saketh"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="hero-portrait-wrap">
+                            <div class="portrait-frame">
+                                <img src="Images/img1.png" alt="Portrait of Saketh Vadlamudi" width="469" height="720">
+                            </div>
+                            <div class="focus-card">
+                                <span class="focus-icon"><i class="fas fa-bolt" aria-hidden="true"></i></span>
+                                <div>
+                                    <small>Current role</small>
+                                    <strong>Oracle · Senior Data Scientist</strong>
+                                    <p>AI Applications Engineer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proof-grid">
+                    <div class="proof-item">
+                        <strong>4+ years</strong>
+                        <span>AI, data &amp; software engineering</span>
+                    </div>
+                    <div class="proof-item">
+                        <strong>3 organizations</strong>
+                        <span>Oracle · Tiger Analytics · ValueLabs</span>
+                    </div>
+                    <div class="proof-item">
+                        <strong>Measured impact</strong>
+                        <span>60%+ faster · 2× gains · 65+ hours saved</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-shell">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-5">
+                        <div class="about-visual">
+                            <img src="Images/img3.png" alt="Saketh Vadlamudi" loading="lazy" width="639" height="720">
+                            <div class="about-caption">
+                                <i class="fas fa-location-dot" aria-hidden="true"></i>
+                                <span>Building practical AI for complex enterprises</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="section-heading">
+                            <p class="eyebrow"><span></span> About</p>
+                            <h2>Engineering where AI, data, and business operations meet.</h2>
+                        </div>
+                        <p class="section-lead">
+                            I’m a Senior Data Scientist and AI Applications Engineer at Oracle, focused on turning ambiguous business problems into dependable AI and data products. My experience spans enterprise NL-to-SQL, multi-agent reporting systems, applied machine learning, and automation across Oracle, Tiger Analytics, and ValueLabs.
                         </p>
-                        <p>
-                            I'm deeply passionate about data and technology, and I enjoy diving deep into problems to extract meaningful insights and deliver impactful solutions.
+                        <p class="body-copy">
+                            I work across the stack—reasoning about architecture, building Python services and AI workflows, shaping usable interfaces, and translating technical output into decisions leaders can act on.
                         </p>
-                        <div class="mt-4">
-                            <a href="#contact" class="btn btn-primary me-3">Get In Touch</a>
-                            <a href="#projects" class="btn btn-outline-primary">View Projects</a>
+                        <div class="education-row">
+                            <div>
+                                <span class="education-label">Postgraduate program</span>
+                                <strong>Data Science &amp; AI</strong>
+                                <small>IIT Roorkee</small>
+                            </div>
+                            <div>
+                                <span class="education-label">Bachelor of Technology</span>
+                                <strong>Engineering</strong>
+                                <small>Narasaraopeta Engineering College</small>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="skills" class="py-5">
-        <div class="container">
-            <div class="section-title-wrapper" data-aos="fade-up">
-                <h2 class="section-title">Technical Skills</h2>
+        <section id="expertise" class="section-shell section-muted">
+            <div class="container">
+                <div class="section-heading heading-row">
+                    <div>
+                        <p class="eyebrow"><span></span> Expertise</p>
+                        <h2>Built for real enterprise constraints.</h2>
+                    </div>
+                    <p>From guarded data access to stakeholder-facing applications, I combine AI engineering with dependable software delivery.</p>
+                </div>
+
+                <div class="expertise-grid">
+                    <article class="expertise-card">
+                        <span class="card-icon"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></span>
+                        <h3>Enterprise AI</h3>
+                        <p>Agentic workflows, RAG, NLP, evaluation, prompt design, and Codex Skills.</p>
+                        <div class="tag-row"><span>GenAI</span><span>LangGraph</span><span>RAG</span></div>
+                    </article>
+                    <article class="expertise-card oracle-card">
+                        <span class="card-icon"><i class="fas fa-database" aria-hidden="true"></i></span>
+                        <h3>Oracle Data Systems</h3>
+                        <p>Secure NL-to-SQL, Fusion migration readiness, data quality, and SQL remediation.</p>
+                        <div class="tag-row"><span>Oracle SQL</span><span>Fusion</span><span>Guardrails</span></div>
+                    </article>
+                    <article class="expertise-card">
+                        <span class="card-icon"><i class="fas fa-code" aria-hidden="true"></i></span>
+                        <h3>Product Engineering</h3>
+                        <p>Python APIs, web applications, workflow automation, and decision-support interfaces.</p>
+                        <div class="tag-row"><span>Python</span><span>APIs</span><span>JavaScript</span></div>
+                    </article>
+                    <article class="expertise-card">
+                        <span class="card-icon"><i class="fas fa-cloud" aria-hidden="true"></i></span>
+                        <h3>Cloud &amp; Delivery</h3>
+                        <p>Cloud-native deployment, containers, engineering automation, and delivery visibility.</p>
+                        <div class="tag-row"><span>AWS</span><span>GCP</span><span>Docker</span><span>Jira</span></div>
+                    </article>
+                </div>
             </div>
-            <div class="skills-container" data-aos="fade-up">
+        </section>
 
-    <div class="skill-item" data-tooltip="Python">
-        <i class="fab fa-python" style="color: #3776AB;"></i>
-        <span class="skill-name">Python</span>
-    </div>
+        <section id="experience" class="section-shell">
+            <div class="container">
+                <div class="section-heading heading-row">
+                    <div>
+                        <p class="eyebrow"><span></span> Experience</p>
+                        <h2>Enterprise AI, ML products, and automation.</h2>
+                    </div>
+                    <a class="text-link" href="Images/Resume/Saketh_Vadlamudi_AI_ML_4YOE_Current.pdf" target="_blank" rel="noopener noreferrer">Current résumé <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                </div>
 
-    <div class="skill-item" data-tooltip="Machine Learning">
-        <i class="fas fa-brain" style="color: #FF7F00;"></i> <span class="skill-name">Machine Learning</span>
-    </div>
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-meta">
+                            <span>May 2026 — Present</span>
+                            <small>Current role</small>
+                        </div>
+                        <div class="experience-card current-company">
+                            <div class="experience-topline">
+                                <div>
+                                    <h3>Oracle</h3>
+                                    <p>Senior Data Scientist — AI Applications Engineer</p>
+                                </div>
+                                <span class="company-chip oracle-chip">AI Applications</span>
+                            </div>
+                            <ul>
+                                <li>Architected and prototyped an enterprise NL-to-SQL platform using Codex Skills, translating business questions into secure, read-only Oracle SQL and decision-ready insights; the architecture and demo earned strong leadership approval.</li>
+                                <li>Built a data-center control tower that unified portfolio, capacity, server, network, and expansion signals through full-stack dashboards and Python API services.</li>
+                                <li>Engineered Oracle Fusion migration-readiness, SQL remediation, and exception-escalation workflows with transactional safeguards, audit history, and automated delivery-risk visibility.</li>
+                            </ul>
+                            <div class="experience-stack"><span>Python</span><span>OpenAI Codex</span><span>Docker</span><span>Jenkins</span><span>Kubernetes</span><span>CI/CD</span></div>
+                        </div>
+                    </article>
 
-    <div class="skill-item" data-tooltip="Generative AI">
-        <i class="fas fa-lightbulb" style="color: #FF7F00;"></i> <span class="skill-name">Gen AI</span>
-    </div>
-
-    <div class="skill-item" data-tooltip="Natural Language Processing (NLP)">
-        <i class="fas fa-comment-dots" style="color: #FF7F00;"></i> <span class="skill-name">NLP</span>
-    </div>
-
-    <div class="skill-item" data-tooltip="Transformers">
-        <i class="fas fa-network-wired" style="color: #FF7F00;"></i> <span class="skill-name">Transformers</span>
-    </div>
-
-<div class="skill-item" data-tooltip="Langchain">
-    <span style="font-size: 2.5rem; line-height: 1;">🦜🔗</span> <span class="skill-name">Langchain</span>
-</div>
-
-    <div class="skill-item" data-tooltip="ML Libraries (Scikit-learn, Pandas, NumPy)">
-        <i class="fas fa-cogs" style="color: #3776AB;"></i>
-        <span class="skill-name">ML Libraries</span>
-    </div>
-
-    <div class="skill-item" data-tooltip="AWS Cloud">
-        <i class="fab fa-aws" style="color: #FF9900;"></i>
-        <span class="skill-name">AWS</span>
-    </div>
-
-    <div class="skill-item" data-tooltip="SQL">
-        <i class="fas fa-database" style="color: #00758F;"></i>
-        <span class="skill-name">SQL</span>
-    </div>
-
-    <div class="skill-item" data-tooltip="MySQL">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy">
-        <span class="skill-name">MySQL</span>
-    </div>
-
-    <div class="skill-item" data-tooltip="Google BigQuery">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="BigQuery" loading="lazy">
-        <span class="skill-name">BigQuery</span>
-    </div>
-
-    <div class="skill-item" data-tooltip="Vertica">
-        <i class="fas fa-hdd" style="color: #00AEEF;"></i> <span class="skill-name">Vertica</span>
-    </div>
-
-	<div class="skill-item" data-tooltip="Django">
-		<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" loading="lazy" class="django-logo-make-blue">
-		<span class="skill-name">Django</span>
-	</div>
-	
-		<div class="skill-item" data-tooltip="HTML5">
-			<i class="fab fa-html5" style="color: #E44D26;"></i>
-			<span class="skill-name">HTML</span>
-		</div>
-	
-		<div class="skill-item" data-tooltip="CSS3">
-			<i class="fab fa-css3-alt" style="color: #264DE4;"></i>
-			<span class="skill-name">CSS</span>
-		</div>
-	
-		<div class="skill-item" data-tooltip="JavaScript">
-			<i class="fab fa-js" style="color: #F7DF1E;"></i>
-			<span class="skill-name">JavaScript</span>
-		</div>
-	
-		<div class="skill-item" data-tooltip="Docker">
-			<i class="fab fa-docker" style="color: #2496ED;"></i>
-			<span class="skill-name">Docker</span>
-		</div>
-	
-		<div class="skill-item" data-tooltip="Git">
-			<i class="fab fa-git-alt" style="color: #F05032;"></i>
-			<span class="skill-name">Git</span>
-		</div>
-	
-		<div class="skill-item" data-tooltip="Unix/Linux">
-			<i class="fab fa-linux" style="color: #FCC624;"></i> <span class="skill-name">Unix</span>
-		</div>
-	
-		<div class="skill-item" data-tooltip="JIRA">
-			<i class="fab fa-jira" style="color: #0052CC;"></i>
-			<span class="skill-name">JIRA</span>
-		</div>
-		<div class="skill-item" data-tooltip="UiPath (RPA)">
-			<img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/uipath.svg" alt="UiPath" loading="lazy" style="width: 2.5rem; height: 2.5rem;">
-			<span class="skill-name">UiPath</span>
-		</div>
-	
-	</div>
-    </section>
-
-    <section id="experience" class="py-5">
-        <div class="container">
-            <div class="section-title-wrapper" data-aos="fade-up">
-                <h2 class="section-title">Experience</h2>
-            </div>
-            <div class="experience-container">
-                <div class="row g-4">
-				    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <article class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-meta">
+                            <span>May 2025 — Mar 2026</span>
+                            <small>Applied GenAI</small>
+                        </div>
                         <div class="experience-card">
-                            <div class="experience-header">
-                                <div class="header-content d-flex align-items-center mb-2">
-                                    <span class="experience-icon me-2">
-                                        <i class="fas fa-laptop-code"></i>
-                                    </span>
-                                    <h3 class="mb-0">Tiger Analytics</h3>
+                            <div class="experience-topline">
+                                <div>
+                                    <h3>Tiger Analytics</h3>
+                                    <p>AIML Senior Associate</p>
                                 </div>
-                                    <div class="company-info">
-                                        <p class="company-name">Senior Analyst - Data Science</p>
-                                        <p class="experience-date">May 2025 - Present</p>
-                                </div>
+                                <span class="company-chip">Agentic AI</span>
                             </div>
-                            <div class="experience-body">
-                                <ul class="experience-achievements">
-                                    <li>Architected an autonomous, multi-agent reasoning engine using LangGraph to decompose ambiguous user requests into parallel, dependency-aware execution graphs, reducing query latency by 60%.</li>
-                                    <li>Engineered the engine as a self-correcting, schema-aware RAG pipeline where orchestrated agents autonomously produce natural language insights, structured tabular data, and interactive Chart.js configurations from a single user query.</li>
-									<li>Deployed models using AWS services such as Lambda, EC2, ECR, worked on DynamoDB, Redshift and SageMaker</li>
-                                </ul>
-                            </div>
+                            <ul>
+                                <li>Architected a LangGraph-based multi-agent reasoning engine that decomposed ambiguous requests into parallel, dependency-aware execution graphs, reducing reporting latency by more than 60%.</li>
+                                <li>Built a self-correcting, schema-aware pipeline handling 2,000 daily queries and producing natural-language insights, structured data, and interactive charts from a single request.</li>
+                            </ul>
+                            <div class="experience-stack"><span>Python</span><span>LangGraph</span><span>Pydantic</span><span>AWS</span><span>FastAPI</span><span>PostgreSQL</span></div>
                         </div>
-                    </div>
-				    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"></div>
+                        <div class="timeline-meta">
+                            <span>Mar 2022 — May 2025</span>
+                            <small>ML &amp; engineering</small>
+                        </div>
                         <div class="experience-card">
-                            <div class="experience-header">
-                                <div class="header-content d-flex align-items-center mb-2">
-                                    <span class="experience-icon me-2">
-                                        <i class="fas fa-laptop-code"></i>
-                                    </span>
-                                    <h3 class="mb-0">ValueLabs</h3>
+                            <div class="experience-topline">
+                                <div>
+                                    <h3>ValueLabs</h3>
+                                    <p>Senior Software Engineer — Data Scientist</p>
                                 </div>
-                                    <div class="company-info">
-                                        <p class="company-name">Senior Software Engineer - Data Science </p>
-                                        <p class="experience-date">April 2023 - May 2025</p>
-                                </div>
+                                <span class="company-chip">Applied ML</span>
                             </div>
-                            <div class="experience-body">
-                                <ul class="experience-achievements">
-                                    <li>Developed Machine Learning Model for Sentiment Analysis of customer reviews</li>
-                                    <li>Architected Advertisment Recommendation System using collaborative filtering</li>
-                                    <li>Engineered a satte-of-art language model using pre-trained advanced transofmers like DistilVert, Bert2</li>
-									<li>Participated in POC for fine tuning LLAMA2 on custom data set</li>
-                                </ul>
-                            </div>
+                            <ul>
+                                <li>Delivered a sentiment-analysis model with 93% accuracy and an advertisement recommendation system with 0.79 MAE, contributing to a 20% increase in click-through rate.</li>
+                                <li>Improved a Python factory-design process by 2× and helped reduce campaign drop-off by 12%.</li>
+                                <li>Automated recurring workflows to save more than 65 working hours monthly and delivered four scalable, secure Django applications.</li>
+                            </ul>
+                            <div class="experience-stack"><span>Python</span><span>ML</span><span>NLP</span><span>Django</span><span>AWS</span><span>BigQuery</span><span>Docker</span></div>
                         </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="section-shell section-muted">
+            <div class="container">
+                <div class="section-heading heading-row">
+                    <div>
+                        <p class="eyebrow"><span></span> Selected work</p>
+                        <h2>Impact across Oracle, Tiger Analytics, and ValueLabs.</h2>
                     </div>
-                    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-                        <div class="experience-card">
-                            <div class="experience-header">
-                                <div class="header-content d-flex align-items-center mb-2">
-                                    <span class="experience-icon me-2">
-                                        <i class="fas fa-laptop-code"></i>
-                                    </span>
-                                    <h3 class="mb-0">ValueLabs</h3>
-                                </div>
-                                    <div class="company-info">
-                                        <p class="company-name">Software Engineer</p>
-                                        <p class="experience-date">March 2022 - April 2023</p>
-                                </div>
-                            </div>
-                            <div class="experience-body">
-                                <ul class="experience-achievements">
-                                    <li>Spearheaded python process on Factory Design Mechanism, reduced run time performance by 2X</li>
-                                    <li>Delivered 4 high-quality, scalable and secure Web applications using Django</li>
-                                    <li>Implemneted several python based automations for handling regular tasks resulted in significant reductions of over 65 working hours monthly</li>
-                                </ul>
+                    <p>Selected outcomes from enterprise AI, applied machine learning, data platforms, and engineering automation.</p>
+                </div>
+
+                <div class="enterprise-grid">
+                    <article class="enterprise-card featured">
+                        <div class="case-number">01</div>
+                        <div class="case-label"><i class="fas fa-database" aria-hidden="true"></i> Oracle · Applied AI</div>
+                        <h3>Secure enterprise NL-to-SQL</h3>
+                        <p>Converted natural-language business questions into governed, read-only Oracle SQL and concise insights through a reusable Codex Skills architecture.</p>
+                        <ul class="case-outcomes">
+                            <li>Schema-aware generation</li>
+                            <li>Read-only security controls</li>
+                            <li>Leadership-backed prototype</li>
+                        </ul>
+                    </article>
+
+                    <article class="enterprise-card">
+                        <div class="case-number">02</div>
+                        <div class="case-label tiger-label"><i class="fas fa-diagram-project" aria-hidden="true"></i> Tiger Analytics · Agentic AI</div>
+                        <h3>Multi-agent reporting intelligence</h3>
+                        <p>Orchestrated dependency-aware agents that transformed a single request into insights, structured data, and interactive charts at production scale.</p>
+                        <ul class="case-outcomes">
+                            <li>60%+ lower latency</li>
+                            <li>2,000 daily queries</li>
+                            <li>Self-correcting pipeline</li>
+                        </ul>
+                    </article>
+
+                    <article class="enterprise-card">
+                        <div class="case-number">03</div>
+                        <div class="case-label valuelabs-label"><i class="fas fa-chart-line" aria-hidden="true"></i> ValueLabs · Applied ML</div>
+                        <h3>Product intelligence models</h3>
+                        <p>Built sentiment and recommendation systems whose outputs were adopted by product stakeholders to improve customer messaging and ad relevance.</p>
+                        <ul class="case-outcomes">
+                            <li>93% sentiment accuracy</li>
+                            <li>0.79 recommendation MAE</li>
+                            <li>20% CTR increase</li>
+                        </ul>
+                    </article>
+
+                    <article class="enterprise-card">
+                        <div class="case-number">04</div>
+                        <div class="case-label"><i class="fas fa-server" aria-hidden="true"></i> Oracle · Decision intelligence</div>
+                        <h3>Infrastructure &amp; migration operations</h3>
+                        <p>Unified data-center capacity and infrastructure signals while automating Oracle Fusion readiness, remediation, and exception-escalation workflows.</p>
+                        <ul class="case-outcomes">
+                            <li>Executive risk visibility</li>
+                            <li>Transactional safeguards</li>
+                            <li>Audit &amp; escalation history</li>
+                        </ul>
+                    </article>
+
+                    <article class="enterprise-card">
+                        <div class="case-number">05</div>
+                        <div class="case-label valuelabs-label"><i class="fas fa-gears" aria-hidden="true"></i> ValueLabs · Engineering</div>
+                        <h3>Automation &amp; web platforms</h3>
+                        <p>Improved core Python processing, automated repetitive operations, and delivered secure Django applications for internal and client-facing workflows.</p>
+                        <ul class="case-outcomes">
+                            <li>2× runtime improvement</li>
+                            <li>12% lower drop-off</li>
+                            <li>65+ hours saved monthly</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="subsection-heading">
+                    <div>
+                        <p class="eyebrow"><span></span> Open-source builds</p>
+                        <h2>Selected technical projects.</h2>
+                    </div>
+                    <a class="text-link" href="https://github.com/Saketh-Vadlamudi" target="_blank" rel="noopener noreferrer">All repositories <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                </div>
+
+                <div class="project-grid">
+                    <article class="project-card">
+                        <a class="project-image" href="https://github.com/Saketh-Vadlamudi/RAG-Paper-Curator" target="_blank" rel="noopener noreferrer" aria-label="View HybridSeek on GitHub">
+                            <img src="Images/hybrid_RAG_Search.png" alt="Hybrid search architecture for HybridSeek" loading="lazy">
+                            <span><i class="fab fa-github" aria-hidden="true"></i> View code</span>
+                        </a>
+                        <div class="project-body">
+                            <div class="tag-row"><span>Python</span><span>OpenSearch</span><span>Redis</span><span>Airflow</span></div>
+                            <h3>HybridSeek — Semantic RAG Search</h3>
+                            <p>Hybrid retrieval across 10K+ document chunks with more than 90% recall@10 and an 8× repeated-query speedup through Redis caching.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <a class="project-image" href="https://github.com/Saketh-Vadlamudi/FineTuning_LLAMA_3.2_3B" target="_blank" rel="noopener noreferrer" aria-label="View Llama fine-tuning project on GitHub">
+                            <img src="Images/FineTune_llama_3.2_3B.jpg" alt="Llama 3.2 fine-tuning project" loading="lazy">
+                            <span><i class="fab fa-github" aria-hidden="true"></i> View code</span>
+                        </a>
+                        <div class="project-body">
+                            <div class="tag-row"><span>QLoRA</span><span>Unsloth</span><span>Hugging Face</span></div>
+                            <h3>Domain Fine-Tuning with Llama 3.2</h3>
+                            <p>QLoRA and Unsloth fine-tuning cut memory use by 60%, doubled training speed, and achieved $47 MAE versus GPT-4o’s $76 zero-shot baseline.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <a class="project-image" href="https://github.com/Saketh-Vadlamudi/MCP" target="_blank" rel="noopener noreferrer" aria-label="View MCP multi-agent project on GitHub">
+                            <img src="Images/MCPImage.jpg" alt="Model Context Protocol multi-agent project" loading="lazy">
+                            <span><i class="fab fa-github" aria-hidden="true"></i> View code</span>
+                        </a>
+                        <div class="project-body">
+                            <div class="tag-row"><span>Python</span><span>MCP</span><span>Agents</span></div>
+                            <h3>Multi-Agent Tool Calling</h3>
+                            <p>An agent system that integrates multiple tool servers and transport patterns through the Model Context Protocol.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <a class="project-image" href="https://github.com/Saketh-Vadlamudi/ChatWithPDF" target="_blank" rel="noopener noreferrer" aria-label="View Chat with PDF on GitHub">
+                            <img src="Images/ChatWithPDF.jpg" alt="Chat with PDF retrieval application" loading="lazy">
+                            <span><i class="fab fa-github" aria-hidden="true"></i> View code</span>
+                        </a>
+                        <div class="project-body">
+                            <div class="tag-row"><span>Python</span><span>GenAI</span><span>LangChain</span></div>
+                            <h3>Chat with PDF</h3>
+                            <p>A retrieval-based application for asking natural-language questions across document collections using embeddings and language models.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="credentials" class="section-shell">
+            <div class="container">
+                <div class="section-heading heading-row">
+                    <div>
+                        <p class="eyebrow"><span></span> Credentials</p>
+                        <h2>Validated learning and recognized impact.</h2>
+                    </div>
+                </div>
+
+                <div class="credential-layout">
+                    <div>
+                        <h3 class="group-title">Certifications</h3>
+                        <div class="certificate-list">
+                            <a class="certificate-card" href="https://www.linkedin.com/feed/update/urn:li:activity:7390641877613604864/" target="_blank" rel="noopener noreferrer">
+                                <img src="Images/Certificates/GCP_MLE_Professional.png" alt="Google Cloud Professional Machine Learning Engineer credential" loading="lazy">
+                                <div><small>Google Cloud</small><strong>Professional Machine Learning Engineer</strong><span>View credential <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div>
+                            </a>
+                            <a class="certificate-card" href="https://www.linkedin.com/feed/update/urn:li:activity:7388611021109673984/" target="_blank" rel="noopener noreferrer">
+                                <img src="Images/Certificates/GCP_GenAI_Leader.png" alt="Google Cloud Generative AI Leader credential" loading="lazy">
+                                <div><small>Google Cloud</small><strong>Generative AI Leader</strong><span>View credential <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div>
+                            </a>
+                            <a class="certificate-card" href="https://www.credly.com/badges/9ea79bf7-390a-4d55-9cd1-51a8827f03df/linked_in_profile" target="_blank" rel="noopener noreferrer">
+                                <img src="Images/CloudPractitioner.png" alt="AWS Certified Cloud Practitioner credential" loading="lazy">
+                                <div><small>Amazon Web Services</small><strong>Certified Cloud Practitioner</strong><span>View credential <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div>
+                            </a>
+                        </div>
+
+                        <div class="course-group">
+                            <h4>Additional Coursera learning</h4>
+                            <div class="course-list">
+                                <a href="https://www.coursera.org/account/accomplishments/verify/PD3MVUWWXHJB" target="_blank" rel="noopener noreferrer">
+                                    <span class="course-icon"><i class="fas fa-brain" aria-hidden="true"></i></span>
+                                    <span><strong>AI for Everyone</strong><small>Coursera</small></span>
+                                    <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://www.coursera.org/account/accomplishments/verify/X4HB5MZDQSPZ" target="_blank" rel="noopener noreferrer">
+                                    <span class="course-icon"><i class="fab fa-python" aria-hidden="true"></i></span>
+                                    <span><strong>Python Data Structures</strong><small>Coursera</small></span>
+                                    <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://www.coursera.org/account/accomplishments/verify/DXHRX6KTNTMM" target="_blank" rel="noopener noreferrer">
+                                    <span class="course-icon"><i class="fas fa-code" aria-hidden="true"></i></span>
+                                    <span><strong>Programming for Everybody</strong><small>Coursera</small></span>
+                                    <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
-                        <div class="experience-card">
-                            <div class="experience-header">
-                                <div class="header-content d-flex align-items-center mb-2">
-                                    <span class="experience-icon me-2">
-                                        <i class="fas fa-code"></i>
-                                    </span>
-                                    <h3 class="mb-0">ValueLabs</h3>
+                    <div>
+                        <h3 class="group-title">Recognition</h3>
+                        <div class="recognition-list">
+                            <article class="recognition-card">
+                                <span class="recognition-icon"><i class="fas fa-arrow-trend-up" aria-hidden="true"></i></span>
+                                <div>
+                                    <span class="recognition-year">2026 · Tiger Analytics</span>
+                                    <h4>Fast-track promotion</h4>
+                                    <p>Promoted within seven months for project delivery, technical leadership, and performance.</p>
+                                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7429829546625093632/" target="_blank" rel="noopener noreferrer">View on LinkedIn <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                                 </div>
-                                    <div class="company-info">
-                                        <p class="company-name">Internship</p>
-                                        <p class="experience-date"> Dec 2021 - March 2022</p>
+                            </article>
+                            <article class="recognition-card">
+                                <span class="recognition-icon"><i class="fas fa-trophy" aria-hidden="true"></i></span>
+                                <div>
+                                    <span class="recognition-year">2024 · ValueLabs</span>
+                                    <h4>CEO Choice Award</h4>
+                                    <p>First-prize recognition for consistent client delivery and execution under tight timelines.</p>
+                                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7218293128829521920/" target="_blank" rel="noopener noreferrer">View on LinkedIn <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                                 </div>
-                            </div>
-                            <div class="experience-body">
-                                <ul class="experience-achievements">
-                                    <li>Extracted data from authorized websites for specific clients</li>
-									<li>Developed several UiPath workflows for the production </li>
-                                    <li>Streamlined operations for Finance and HR departments by automating manual tasks</li>
-									<li>Worked on Uipath Orchestrator and Action Center</li>
-									<li>managed multiple bots for parallel processing</li>
-                                </ul>
-                            </div>
+                            </article>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-5">
-        <div class="container">
-            <div class="section-title-wrapper" data-aos="fade-up">
-                <h2 class="section-title">Personal Projects</h2>
-            </div>
-            <div class="row g-4">
-				
-				<div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card h-100">
-                        <div class="project-image">
-                            <img src="Images/hybrid_RAG_Search.png" alt="Student Complaints System" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-content">
-                                    <div class="tech-stack">
-                                        <span>Python</span>
-										<span>Opensearch</span>
-                                        <span>Redis</span>
-										<span>Airflow</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/RAG-Paper-Curator" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-										</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">ARXIV Paper Curator</h3>
-                            <p class="small mb-0">A production-grade hybrid RAG system for real-time semantic search over large-scale docus using BM25, vector embeddings, RRF</p>
-                        </div>
-                    </div>
-                </div>
-
-				<div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card h-100">
-                        <div class="project-image">
-                            <img src="Images/FineTune_llama_3.2_3B.jpg" alt="Student Complaints System" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-content">
-                                    <div class="tech-stack">
-                                        <span>Python</span>
-										<span>QloRA</span>
-                                        <span>Unsloth</span>
-										<span>Hugging Face</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/FineTuning_LLAMA_3.2_3B" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-										</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">Fine-Tuning LLAMA_3 on Domain Specifc Data</h3>
-                            <p class="small mb-0">Fine-tuning pipeline to benchmark proprietary models (GPT-4o) against open-source alternatives (Llama-3.2-3B) for a high-volume e-commerce pricing task</p>
-                        </div>
-                    </div>
-                </div>
-
-
-				
-				<div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card h-100">
-                        <div class="project-image">
-                            <img src="ViralTweetImage.jpg" alt="Student Complaints System" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-content">
-                                    <div class="tech-stack">
-                                        <span>Python</span>
-										<span>Langgraph</span>
-                                        <span>Pydantic</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/Viral-Tweet-Reflector" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </a>
-										<a href="https://github.com/Saketh-Vadlamudi/Viral-Tweet-Reflector/blob/main/demo.zip" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        Zipped Demo
-                                    </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">Viral Tweet Reflector</h3>
-                            <p class="small mb-0">Improve your tweets with AI-powered feedback and rewriting to make them more viral, clear, and stylish.</p>
-                        </div>
-                    </div>
-                </div>
-
-				<div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card h-100">
-                        <div class="project-image">
-                            <img src="MCPImage.jpg" alt="Student Complaints System" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-content">
-                                    <div class="tech-stack">
-                                        <span>Python</span>
-										<span>Langgraph</span>
-                                        <span>Pydantic</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/MCP" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">Multi Agent Tool Calling (MCP)</h3>
-                            <p class="small mb-0">showcases how to integrate various tool servers with different communication transports for an intelligent agent to leverage.</p>
-                        </div>
-                    </div>
-                </div>
-				
-				<div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card h-100">
-                        <div class="project-image">
-                            <img src="LanguageModelling.jpg" alt="Student Complaints System" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-content">
-                                    <div class="tech-stack">
-                                        <span>Python</span>
-										<span>NLP</span>
-                                        <span>Transformers</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/LanguageModelling" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">Language Modelling</h3>
-                            <p class="small mb-0">Language modelling system to enhance text prediction capabilities such as next word generation and masked word completion.</p>
-                        </div>
-                    </div>
-                </div>
-				
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card h-100">
-                        <div class="project-image">
-                            <img src="ChatWithPDF.jpg" alt="Student Complaints System" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-content">
-                                    <div class="tech-stack">
-                                        <span>Python</span>
-                                        <span>Gen AI</span>
-                                        <span>LangChain</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/ChatWithPDF" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">Chat With PDF</h3>
-                            <p class="small mb-0">Enabled natural language querying over internal documents. Integrated language models with retrieval-based search techniques using embedding.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card h-100">
-                    <div class="project-image">
-                            <img src="WalmartSalesForecasting.jpg" alt="Typing Speed Test" class="img-fluid">
-                        <div class="project-overlay">
-                            <div class="project-content">
-                                <div class="tech-stack">
-                                    <span>Python</span>
-                                    <span>ML</span>
-                                    <span>Time Series</span>
-                                </div>
-                                <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/WalmartSalesForecasting" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">Walmart Sales Forecasting</h3>
-                            <p class="small mb-0">This focused on predicting the weekly sales of different Walmart stores using SARIMAX.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-card h-100">
-                    <div class="project-image">
-                            <img src="CarPricePred.jpg" alt="Wikipedia Search" class="img-fluid">
-                        <div class="project-overlay">
-                            <div class="project-content">
-                                <div class="tech-stack">
-                                        <span>Python</span>
-                                        <span>ML</span>
-                                        <span>Regression</span>
-                                </div>
-                                <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/CarPricePrediction" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">Car Price Prediction</h3>
-                            <p class="small mb-0">A machine learning solution designed to estimate the prices of used cars based on various features like model, mileage, year of manufacture, and fuel type etc.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card h-100">
-                    <div class="project-image">
-                            <img src="HousePricePred.jpg" alt="Food Munch Website" class="img-fluid">
-                        <div class="project-overlay">
-                            <div class="project-content">
-                                <div class="tech-stack">
-                                        <span>Python</span>
-                                        <span>ML</span>
-                                        <span>Regression</span>
-                                </div>
-                                <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/HousePricePrediction" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">House Price Prediction</h3>
-                            <p class="small mb-0">Used machine learning to analyze various factors like location, size, and market trends to estimate the future selling price of a property.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AI Tutoring System -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card h-100">
-                    <div class="project-image">
-                            <img src="AbsenteesimPred.jpg" alt="AI Tutor" class="img-fluid">
-                        <div class="project-overlay">
-                            <div class="project-content">
-                                <div class="tech-stack">
-                                    <span>Python</span>
-                                    <span>ML</span>
-                                    <span>Classification</span>
-                                </div>
-                                <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/AbsenteesimPrediction" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">Absenteesim Prediction</h3>
-                            <p class="small mb-0">An intelligent system that uses data and machine learning to forecast the likelihood of an employee being absent from work.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Student Complaints System -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card h-100">
-                        <div class="project-image">
-                            <img src="BookRecommendation.jpg" alt="Student Complaints System" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-content">
-                                    <div class="tech-stack">
-										<span>Python</span>
-                                        <span>ML</span>
-                                        <span>Collaborative Filtering</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/BookRecommendationSystem" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">Book Recommendation System</h3>
-                            <p class="small mb-0">A system that analyze your reading preferences and past choices to suggest other books you're likely to enjoy.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <div class="project-card h-100">
-                        <div class="project-image">
-                            <img src="SMSSpamDetection.jpg" alt="Student Complaints System" class="img-fluid">
-                            <div class="project-overlay">
-                                <div class="project-content">
-                                    <div class="tech-stack">
-                                        <span>Python</span>
-                                        <span>ML</span>
-                                        <span>Classification</span>
-                                    </div>
-                                    <div class="project-links">
-                                        <a href="https://github.com/Saketh-Vadlamudi/SMSPamDetection" target="_blank" class="btn-code">
-                                        <i class="fab fa-github"></i>
-                                        View Code
-                                    </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-details p-3">
-                            <h3 class="h5">SMS Spam Classification</h3>
-                            <p class="small mb-0">This automatically categorizes text messages to identify and filter out unwanted spam from legitimate communications.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="certifications" class="py-5">
-        <div class="container">
-            <div class="section-title-wrapper" data-aos="fade-up">
-                <h2 class="section-title">Certifications</h2>
-            </div>
-			<div class="certificates-grid">
-			  <div class="certificate-card" data-aos="fade-up">
-                    <div class="certificate-image">
-                        <img src="Images/Certificates/GCP_MLE_Professional.png" alt="Dynamic Web Applications" loading="lazy">
-                        <div class="certificate-overlay">
-                            <h4>Professional Machine Learning Engineer</h4>
-                            <p>Google Cloud</p>
-                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7390641877613604864/" target="_blank" rel="noopener noreferrer" class="view-certificate">
-                                <i class="fas fa-award"></i> View Certificate
-                            </a>
-                        </div>
-                    </div>
-                </div>
-				<div class="certificate-card" data-aos="fade-up">
-                    <div class="certificate-image">
-                        <img src="Images/Certificates/GCP_GenAI_Leader.png" alt="Dynamic Web Applications" loading="lazy">
-                        <div class="certificate-overlay">
-                            <h4>GenerativeAI Leader</h4>
-                            <p>Google Cloud</p>
-                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7388611021109673984/" target="_blank" rel="noopener noreferrer" class="view-certificate">
-                                <i class="fas fa-award"></i> View Certificate
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="certificate-card" data-aos="fade-up">
-                    <div class="certificate-image">
-                        <img src="CloudPractitioner.png" alt="Static Web Development" loading="lazy">
-                        <div class="certificate-overlay">
-                            <h4>Cloud Practitioner</h4>
-                            <p>AWS</p>
-                            <a href="https://www.credly.com/badges/9ea79bf7-390a-4d55-9cd1-51a8827f03df/linked_in_profile" target="_blank" rel="noopener noreferrer" class="view-certificate">
-                                <i class="fas fa-award"></i> View Certificate
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="certificate-image">
-                        <img src="AIForEveryOne.png" alt="Responsive Web Design" loading="lazy">
-                        <div class="certificate-overlay">
-                            <h4>AI For Everyone</h4>
-                            <p>Coursera</p>
-                            <a href="https://www.coursera.org/account/accomplishments/verify/PD3MVUWWXHJB" target="_blank" rel="noopener noreferrer" class="view-certificate">
-                                <i class="fas fa-award"></i> View Certificate
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="certificate-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="certificate-image">
-                        <img src="PythonDataStructures.png" alt="Dynamic Web Applications" loading="lazy">
-                        <div class="certificate-overlay">
-                            <h4>Python Data Structures</h4>
-                            <p>Coursera</p>
-                            <a href="https://www.coursera.org/account/accomplishments/verify/X4HB5MZDQSPZ" target="_blank" rel="noopener noreferrer" class="view-certificate">
-                                <i class="fas fa-award"></i> View Certificate
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="certificate-card" data-aos="fade-up">
-                    <div class="certificate-image">
-                        <img src="ProgrammingForEverybody.png" alt="Python Programming" loading="lazy">
-                        <div class="certificate-overlay">
-                            <h4>Programming For Everybody</h4>
-                            <p>Coursera</p>
-                            <a href="https://www.coursera.org/account/accomplishments/verify/DXHRX6KTNTMM" target="_blank" rel="noopener noreferrer" class="view-certificate">
-                                <i class="fas fa-award"></i> View Certificate
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-	<section id="achievements" class="py-5">
-    <div class="container">
-        <div class="section-title-wrapper" data-aos="fade-up">
-            <h2 class="section-title">Achievements</h2>
-        </div>
-        <div class="achievements-grid">
-            <div class="row g-4 justify-content-center">
-
-                <div class="col-lg-6 col-md-8 col-sm-10" data-aos="fade-up">
-                    <div class="achievement-card">
-                        <div class="achievement-icon">
-                            <i class="fas fa-level-up-alt"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <div class="achievement-badge">
-                                <span>Fast-Track Promotion</span>
-                            </div>
-                            <h3>Accelerated Promotion</h3>
-                            <div class="achievement-meta">
-                                <span><i class="fas fa-chart-line"></i> Tiger Analytics</span>
-                                <span><i class="fas fa-calendar-alt"></i> 2026</span>
-                            </div>
-                            <p class="achievement-description">
-                                Promoted within 7 months of joining for exceptional contribution to project delivery, technical leadership, and exceeding performance benchmarks.
-                            </p>
-                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7429829546625093632/" target="_blank" rel="noopener noreferrer" class="btn achievement-btn">
-                                <i class="fab fa-linkedin"></i> View on LinkedIn
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-8 col-sm-10" data-aos="fade-up" data-aos-delay="100">
-                    <div class="achievement-card">
-                        <div class="achievement-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <div class="achievement-content">
-                            <div class="achievement-badge">
-                                <span>1st Prize</span>
-                            </div>
-                            <h3>CEO Choice Award</h3>
-                            <div class="achievement-meta">
-                                <span><i class="fas fa-university"></i> ValueLabs</span>
-                                <span><i class="fas fa-calendar-alt"></i> 2024</span>
-                            </div>
-                            <p class="achievement-description">
-                                Received award from our CEO for demonstrating strong work ethic and repeated delivery for clients under timed conditions.
-                            </p>
-                            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7218293128829521920/" target="_blank" rel="noopener noreferrer" class="btn achievement-btn">
-                                <i class="fab fa-linkedin"></i> View on LinkedIn
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-	
-<section id="contact" class="py-5 min-vh-100 d-flex align-items-center">
-    <div class="container">
-        <div class="section-title-wrapper" data-aos="fade-up">
-            <h2 class="section-title">Get in Touch</h2>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-                <div class="contact-wrapper">
-                    <div class="contact-decoration">
-                        <div class="decoration-circle"></div>
-                        <div class="decoration-line"></div>
-                    </div>
-                    <form class="contact-form" id="contactForm">
-                        <input type="hidden" name="access_key" value="929d3c0c-bfdd-4a9e-859e-9ccdbd4b0b52">
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-6">
-                                <label for="name" class="form-label">Your Name</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                    <input type="text" class="form-control" id="name" name="name" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-phone"></i>
-                                    </span>
-                                    <input type="tel" class="form-control" id="phone" name="phone" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email Address</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-envelope"></i>
-                                    </span>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="subject" class="form-label">Subject</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-heading"></i>
-                                    </span>
-                                    <input type="text" class="form-control" id="subject" name="subject" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Your Message</label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="fas fa-comment"></i>
-                                </span>
-                                <textarea class="form-control" id="message" name="message" rows="4" style="height: 120px" required></textarea>
-                            </div>
-                        </div>
-
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-submit" id="submitButton">
-                                <span class="btn-text">Send Message</span>
-                                <span class="btn-icon">
-                                    <i class="fas fa-paper-plane"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </main>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-contact"
-					<p class="footer-copyright mb-0">&copy; <span id="currentYear"></span> Saketh Vadlamudi. All Rights Reserved.</p>
-				</div>
-			</div>
+        <div class="container footer-content">
+            <p>&copy; <span id="currentYear"></span> Saketh Vadlamudi</p>
+            <p>AI systems · Data platforms · Enterprise automation</p>
         </div>
     </footer>
 
-    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
+    <button id="scrollToTopBtn" class="scroll-to-top" type="button" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script src="script.js"></script>
-
 </body>
 </html>

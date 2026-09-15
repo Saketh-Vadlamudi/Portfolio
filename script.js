@@ -1,294 +1,127 @@
-// Initialize AOS (Animate On Scroll)
-AOS.init({
-    duration: 800, // Slightly faster
-    once: true,
-    offset: 80 // Trigger a bit earlier
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('mainNav');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    const darkModeToggleBtn = document.getElementById('darkModeToggle');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    const contactForm = document.getElementById('contactForm'); // Use ID for form
-    const currentYearSpan = document.getElementById('currentYear');
+    const navbarCollapse = document.getElementById('navbarNav');
+    const navLinks = [...document.querySelectorAll('.nav-link[href^="#"]')];
+    const themeToggle = document.getElementById('darkModeToggle');
+    const scrollToTopButton = document.getElementById('scrollToTopBtn');
+    const scrollProgress = document.getElementById('scrollProgress');
+    const year = document.getElementById('currentYear');
+    const colorPreference = window.matchMedia('(prefers-color-scheme: dark)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    // Set current year in footer
-    if (currentYearSpan) {
-        currentYearSpan.textContent = new Date().getFullYear();
+    if (year) {
+        year.textContent = new Date().getFullYear();
     }
 
-    // Navbar scroll behavior
-    const handleScroll = () => {
-        // Add/remove background color based on scroll position
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+    const updateThemeButton = () => {
+        if (!themeToggle) return;
+
+        const isDark = document.documentElement.dataset.theme === 'dark';
+        themeToggle.innerHTML = `<i class="fas fa-${isDark ? 'sun' : 'moon'}" aria-hidden="true"></i>`;
+        themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`);
+    };
+
+    updateThemeButton();
+
+    themeToggle?.addEventListener('click', () => {
+        const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = nextTheme;
+        localStorage.setItem('theme', nextTheme);
+        updateThemeButton();
+    });
+
+    colorPreference.addEventListener('change', (event) => {
+        if (localStorage.getItem('theme')) return;
+
+        document.documentElement.dataset.theme = event.matches ? 'dark' : 'light';
+        updateThemeButton();
+    });
+
+    const updateNavigation = () => {
+        const hasScrolled = window.scrollY > 24;
+        navbar?.classList.toggle('scrolled', hasScrolled);
+        scrollToTopButton?.classList.toggle('visible', window.scrollY > 500);
+
+        if (scrollProgress) {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scrollableHeight > 0 ? Math.min(window.scrollY / scrollableHeight, 1) : 0;
+            scrollProgress.style.transform = `scaleX(${progress})`;
         }
 
-        // Update active nav link based on scroll position
-        let currentSectionId = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            // Adjust for navbar height if it's fixed and opaque, otherwise use a smaller offset
-            const offset = navbar.offsetHeight > 0 ? navbar.offsetHeight + 40 : 100; 
-            if (scrollY >= sectionTop - offset) {
-                currentSectionId = section.getAttribute('id');
+        const marker = window.scrollY + window.innerHeight * 0.35;
+        let currentSection = '';
+
+        document.querySelectorAll('main section[id]').forEach((section) => {
+            if (section.offsetTop <= marker) {
+                currentSection = section.id;
             }
         });
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === currentSectionId) {
-                link.classList.add('active');
-            }
-        });
-
-        // Scroll to top button visibility
-        if (scrollToTopBtn) {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.add('visible');
+        navLinks.forEach((link) => {
+            const isActive = link.getAttribute('href') === `#${currentSection}`;
+            link.classList.toggle('active', isActive);
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
             } else {
-                scrollToTopBtn.classList.remove('visible');
+                link.removeAttribute('aria-current');
             }
-        }
+        });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call to set active link and navbar state
+    window.addEventListener('scroll', updateNavigation, { passive: true });
+    window.addEventListener('resize', updateNavigation);
+    updateNavigation();
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+    navbarCollapse?.addEventListener('show.bs.collapse', () => navbar?.classList.add('menu-open'));
+    navbarCollapse?.addEventListener('hidden.bs.collapse', () => navbar?.classList.remove('menu-open'));
 
-            if (targetElement) {
-                // Calculate scroll position considering navbar height if fixed
-                let headerOffset = 0;
-                if (navbar && getComputedStyle(navbar).position === 'fixed') {
-                     headerOffset = navbar.offsetHeight;
-                }
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+    navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            if (!navbarCollapse?.classList.contains('show') || !window.bootstrap) return;
 
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-            // Close mobile menu if open
-            const navbarCollapse = document.getElementById('navbarNav');
-            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                new bootstrap.Collapse(navbarCollapse).hide();
-            }
+            window.bootstrap.Collapse.getOrCreateInstance(navbarCollapse).hide();
         });
     });
 
-    // Typing animation for the home section
-    const typedTextElement = document.querySelector('.typed-text');
-    if (typedTextElement) {
-        new Typed('.typed-text', {
-            strings: ['an AI/ML Engineer', 'a Data Scientist'],
-            typeSpeed: 70, // Adjusted speed
-            backSpeed: 40, // Adjusted speed
-            backDelay: 1800,
-            loop: true,
-            smartBackspace: true // Recommended for better backspacing
-        });
-    }
+    scrollToTopButton?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
+    const revealTargets = document.querySelectorAll([
+        '.section-heading',
+        '.about-visual',
+        '.education-row > div',
+        '.expertise-card',
+        '.timeline-item',
+        '.enterprise-card',
+        '.subsection-heading',
+        '.project-card',
+        '.credential-layout > div'
+    ].join(','));
 
-    // Scroll to top button functionality
-    if (scrollToTopBtn) {
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+    if ('IntersectionObserver' in window && !reducedMotion.matches) {
+        revealTargets.forEach((element) => element.classList.add('reveal-item'));
+        document.body.classList.add('reveal-enabled');
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
             });
-        });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+
+        revealTargets.forEach((element) => revealObserver.observe(element));
     }
 
-    // Dark mode toggle
-    const setDarkTheme = (isDark) => {
-        if (isDark) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            darkModeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            darkModeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
-            localStorage.setItem('theme', 'light');
-        }
-    };
-
-    if (darkModeToggleBtn) {
-        // Check for saved dark mode preference or system preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
-            setDarkTheme(true);
-        } else {
-            setDarkTheme(false); // Explicitly set light if no dark preference
-        }
-
-        darkModeToggleBtn.addEventListener('click', () => {
-            const isCurrentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            setDarkTheme(!isCurrentlyDark);
-        });
-
-        // Listen for changes in system preference
-        prefersDarkScheme.addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme')) { // Only if no user preference is set
-                 setDarkTheme(e.matches);
-            }
-        });
-    }
-
-
-    // Form submission handling with Web3Forms
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(contactForm);
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalButtonHtml = submitBtn.innerHTML; // Save original button content
-
-            // Disable submit button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            const object = {};
-            formData.forEach((value, key) => {
-                object[key] = value;
-            });
-            const json = JSON.stringify(object);
-
-            try {
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: json
-                });
-                
-                const result = await response.json();
-
-                if (result.success) {
-                    showNotification('Message sent successfully! I will get back to you soon.', 'success');
-                    contactForm.reset();
-                } else {
-                    console.error("Web3Forms Error:", result);
-                    showNotification(result.message || 'Failed to send message. Please try again.', 'error');
-                }
-            } catch (error) {
-                console.error("Form Submission Error:", error);
-                showNotification('An error occurred. Failed to send message.', 'error');
-            } finally {
-                // Reset submit button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalButtonHtml;
-            }
-        });
-    }
-
-    // Notification system
-    function showNotification(message, type = 'success') {
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.innerHTML = `
-            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
-            <span>${message}</span>
-        `;
-        
-        document.body.appendChild(notification);
-        
-        // Trigger animation
-        setTimeout(() => notification.classList.add('show'), 10); // Faster trigger
-        
-        // Remove notification after a bit longer
-        setTimeout(() => {
-            notification.classList.remove('show');
-            // Wait for fade out transition to complete before removing
-            notification.addEventListener('transitionend', () => notification.remove());
-        }, 4000); // Display for 4 seconds
-    }
-
-    // Add loading animation for project images
-    const projectImages = document.querySelectorAll('.project-image img');
-    projectImages.forEach(img => {
-        if (img.complete) { // If image is already loaded (e.g. from cache)
-            img.classList.add('loaded');
-        } else {
-            img.addEventListener('load', function() {
-                this.classList.add('loaded');
-            });
-        }
-    });
-
-    // Tooltips (Bootstrap 5 Tooltips)
-    // Ensure skill items have data-bs-toggle="tooltip" and data-bs-title="Your tooltip"
-    // Example: <div class="skill-item" data-bs-toggle="tooltip" data-bs-title="HTML5">
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl, {
-        trigger : 'hover' // Show on hover
-      });
-    });
-    
-    // If you prefer the custom tooltip from your original script for skill items:
-    /*
-    const skillItems = document.querySelectorAll('.skill-item[data-tooltip]');
-    skillItems.forEach(item => {
-        let tooltipEl = null;
-        item.addEventListener('mouseenter', (e) => {
-            const tooltipText = item.getAttribute('data-tooltip');
-            if (!tooltipText) return;
-
-            tooltipEl = document.createElement('div');
-            tooltipEl.className = 'custom-tooltip'; // Style .custom-tooltip in CSS
-            tooltipEl.textContent = tooltipText;
-            document.body.appendChild(tooltipEl);
-
-            const rect = item.getBoundingClientRect();
-            tooltipEl.style.left = `${rect.left + (rect.width / 2) - (tooltipEl.offsetWidth / 2)}px`;
-            tooltipEl.style.top = `${rect.top - tooltipEl.offsetHeight - 5}px`; // 5px offset
-            
-            setTimeout(() => tooltipEl.classList.add('show'), 10);
-        });
-        
-        item.addEventListener('mouseleave', () => {
-            if (tooltipEl) {
-                tooltipEl.classList.remove('show');
-                tooltipEl.addEventListener('transitionend', () => tooltipEl.remove());
-            }
+    document.querySelectorAll('.enterprise-card').forEach((card) => {
+        card.addEventListener('pointermove', (event) => {
+            const bounds = card.getBoundingClientRect();
+            const pointerX = ((event.clientX - bounds.left) / bounds.width) * 100;
+            const pointerY = ((event.clientY - bounds.top) / bounds.height) * 100;
+            card.style.setProperty('--pointer-x', `${pointerX}%`);
+            card.style.setProperty('--pointer-y', `${pointerY}%`);
         });
     });
-    */
-    // Add CSS for .custom-tooltip and .custom-tooltip.show if using this.
-
-    // Experience cards mouse move effect (if you had one, re-add here)
-    // Your original script had a mousemove effect for .experience-card. If desired:
-    const experienceCards = document.querySelectorAll('.experience-card');
-    experienceCards.forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-            // Add a class to activate gradient effect, style in CSS:
-            // .experience-card.mouse-active::before { background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), ...); }
-        });
-        // card.addEventListener('mouseleave', () => { /* remove active class */ });
-    });
-
-}); // End DOMContentLoaded
+});

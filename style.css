@@ -429,59 +429,6 @@ img {
     object-position: center 18%;
 }
 
-.focus-card {
-    position: absolute;
-    right: -42px;
-    bottom: 28px;
-    display: flex;
-    width: 310px;
-    gap: 13px;
-    padding: 17px;
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    background: var(--nav-bg);
-    box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-}
-
-.focus-icon {
-    display: grid;
-    width: 42px;
-    height: 42px;
-    flex: 0 0 42px;
-    place-items: center;
-    border-radius: 12px;
-    background: var(--brand-soft);
-    color: var(--brand);
-}
-
-.focus-card small,
-.focus-card strong {
-    display: block;
-}
-
-.focus-card small {
-    color: var(--muted);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.focus-card strong {
-    margin-top: 2px;
-    color: var(--ink);
-    font-size: 0.9rem;
-}
-
-.focus-card p {
-    margin: 3px 0 0;
-    color: var(--muted);
-    font-size: 0.73rem;
-    line-height: 1.45;
-}
-
 .proof-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1562,20 +1509,6 @@ img {
     box-shadow: var(--shadow-lg), 0 0 0 8px rgba(137, 147, 255, 0.08);
 }
 
-.focus-card {
-    border-color: rgba(67, 83, 232, 0.18);
-    border-radius: 20px;
-    background: var(--surface-glass);
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
-}
-
-.focus-icon {
-    background: linear-gradient(135deg, var(--brand), var(--accent));
-    color: #fff;
-    box-shadow: 0 8px 20px rgba(67, 83, 232, 0.24);
-}
-
 .proof-grid {
     gap: 12px;
     margin-top: 84px;
@@ -2027,10 +1960,6 @@ img {
         min-height: 270px;
     }
 
-    .focus-card {
-        right: -10px;
-    }
-
     .credential-layout {
         gap: 28px;
     }
@@ -2218,12 +2147,6 @@ img {
 
     .hero-portrait-wrap {
         width: 92%;
-    }
-
-    .focus-card {
-        right: -6%;
-        bottom: 18px;
-        width: 88%;
     }
 
     .section-shell {

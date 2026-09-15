@@ -10,4 +10,4 @@ python3 -m http.server 4173
 
 Then open `http://localhost:4173`.
 
-The site uses plain HTML, CSS, and JavaScript with Bootstrap and Font Awesome loaded from CDNs. Résumé versions are intentionally retained under `Images/Resume/`.
+The site uses plain HTML, CSS, and JavaScript with Bootstrap and Font Awesome loaded from CDNs. The current résumé lives at `assets/resumes/Saketh_Vadlamudi_Current.pdf`; retained historical versions are organized under `assets/resumes/archive/`.
